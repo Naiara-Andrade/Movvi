@@ -34,3 +34,14 @@ body {
   font-size: 16px;
   background-color: #0b1515;
 }
+
+.btn-primary{
+ text-decoration: none;
+ border:none;
+ background-color: var(--dark-primary);
+  color: var(--primary);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: var(--sml);
+  font-family: var(--font-secondary);
+}
