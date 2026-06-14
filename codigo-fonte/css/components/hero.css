@@ -31,6 +31,7 @@
   position: relative;
   z-index: 2;
   max-width: 650px; /* Limita a largura para o texto não ficar gigante em telas grandes*/
+  animation: fadeInUp 1s ease-out forwards;
 } 
 
 .hero__title {
@@ -56,6 +57,9 @@
 .hero__actions {
   display: flex;
   gap: 16px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.4s;
 }
 
 /* --- BOTÕES DO HERO ADAPTADOS À SUA IDENTIDADE --- */
@@ -114,5 +118,16 @@
     justify-content: center;
     flex-direction: column;
     gap: 12px;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Começa 20px mais abaixo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* Termina na posição original */
   }
 }
