@@ -1,0 +1,118 @@
+.hero {
+  position: relative;
+  height: 80vh; /* Ocupa 80% da altura da tela, ideal para banners */
+  display: flex;
+  align-items: center; /* Alinha o conteúdo verticalmente no centro */
+/* Conexão 1: Alinhamento lateral idêntico ao do Header */
+  padding: 0 clamp(15px, 2vw, 32px);
+
+  /* DADO MOCKADO: Uma imagem temporária de alta qualidade para testar o layout */
+  background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925');
+  background-size: cover; /* Força a imagem a cobrir o espaço sem distorcer */
+  background-position: center; /* Mantém o centro da imagem sempre visível */
+  background-repeat: no-repeat;
+  color: #ffffff; /* Texto sempre branco para contraste */
+  overflow: hidden; /*ocultar qualquer conteúdo que ultrapasse o tamanho limite (largura ou altura) de um elemento*/
+}
+
+/* Película escura com transição suave vindo do verde escuro do seu header */
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Mistura o preto com o tom escuro do seu projeto para suavizar a colagem com o Header */
+  background: linear-gradient(to right, rgba(11, 21, 21, 0.95) 30%, rgba(11, 21, 21, 0.4) 100%);
+  z-index: 1;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px; /* Limita a largura para o texto não ficar gigante em telas grandes*/
+} 
+
+.hero__title {
+  /* Conexão 2: Mesma fonte sofisticada do corpo do site, mas bem grande */
+  font-family: var(--font-secondary);
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsivo: diminui em telas menores */
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #f4f9f5;
+  
+  /* Um brilho bem sutil para lembrar o estilo da logo */
+  text-shadow: 0 0 15px rgba(9, 207, 168, 0.3);
+}
+
+.hero__description {
+  font-family: var(--font-secondary);
+  font-size: var(--md);
+  line-height: 1.7;
+  margin-bottom: 35px;
+  color: var(--primary); /* Usa o verde-claro suave que você definiu */
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+}
+
+/* --- BOTÕES DO HERO ADAPTADOS À SUA IDENTIDADE --- */
+
+.btn--hero-primary,
+.btn--hero-secondary {
+  font-family: var(--font-secondary);
+  font-size: var(--sml);
+  padding: 12px 24px;
+  border-radius: 4px; /* Mantém o padrão semi-reto dos seus botões do header */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase; /* Deixa o texto elegante */
+  letter-spacing: 1px;
+}
+
+/* Botão Principal: Verde Neon / Azulado do seu tema */
+.btn--hero-primary {
+  background-color: var(--primary);
+  color: var(--dark-primary);
+  border: 2px solid var(--primary);
+  font-weight: 700;
+}
+
+.btn--hero-primary:hover {
+  background-color: transparent;
+  color: var(--active-primary);
+  /* Brilho neon no hover combinando com o menu */
+  box-shadow: 0 0 15px var(--active-primary);
+}
+
+/* Botão Secundário: Fundo escuro do seu projeto com borda sutil */
+.btn--hero-secondary {
+  background-color: rgba(21, 41, 43, 0.8); /* Seu --dark-secondary translúcido */
+  color: var(--primary);
+  border: 2px solid rgba(92, 131, 123, 0.4);
+}
+
+.btn--hero-secondary:hover {
+  border-color: var(--active-primary);
+  color: #ffffff;
+  text-shadow: 0 0 10px var(--active-primary);
+}
+
+/* Ajuste responsivo para telas menores */
+@media (max-width: 650px) {
+  .hero {
+    height: 60vh;
+    text-align: center;
+    padding-top: 40px;
+  }
+  .hero__overlay {
+    background: linear-gradient(to bottom, rgba(11, 21, 21, 0.95) 60%, rgba(11, 21, 21, 0.7) 100%);
+  }
+  .hero__actions {
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
