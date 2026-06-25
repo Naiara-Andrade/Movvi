@@ -76,20 +76,16 @@
 
 /* --- BOTÕES DO HERO ADAPTADOS À SUA IDENTIDADE --- */
 
-.btn--hero-primary,
-.btn--hero-secondary {
-  font-family: var(--font-secondary);
-  font-size: var(--sml);
-  padding: 12px 24px;
-  border-radius: 4px; /* Mantém o padrão semi-reto dos seus botões do header */
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase; /* Deixa o texto elegante */
-  letter-spacing: 1px;
+.btn-hero-primary,
+.btn-hero-secundary {
+  color: var(--primary);
+  padding: 12px 20px;
+  
+  
 }
 
 /* Botão Principal: Verde Neon / Azulado do seu tema */
-.btn--hero-primary {
+.btn-hero-primary {
   font-weight: 700;
   background-image: linear-gradient(
     to right,
@@ -100,23 +96,23 @@
 
   transition: 0.7s;
   background-size: 200% auto;
-  color: var(--primary);
+
 
   display: block;
   outline: none;
   border: none;
 }
 
-.btn--hero-primary:hover {
+.btn-hero-primary:hover {
   background-position: right center;
 
   transform: scale(1.05);
 }
 
 /* Botão Secundário: Fundo escuro do seu projeto com borda sutil */
-.btn--hero-secondary {
+.btn-hero-secondary {
   /*background-color: rgba(21, 41, 43, 0.8);  Seu --dark-secondary translúcido */
-  color: var(--primary);
+ 
   /* border: 2px solid rgba(92, 131, 123, 0.4); */
   background-image: linear-gradient(
     to right,
@@ -130,7 +126,7 @@
   background-size: 200% auto;
 }
 
-.btn--hero-secondary:hover {
+.btn-hero-secondary:hover {
   background-position: right;
   transform: scale(1.03);
 }
