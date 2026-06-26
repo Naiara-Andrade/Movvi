@@ -20,15 +20,18 @@
             <li><a href="#">Categorias</a></li>
           </ul>
         </nav>
-<div class="search-wrapper">
-        <div class="search-bar">
-          <input class="search-input" type="text" placeholder="Pesquisar..." />
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-       
+        <div class="search-wrapper">
+          <div class="search-bar">
+            <input
+              class="search-input"
+              type="text"
+              placeholder="Pesquisar..."
+            />
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+
           <button class="btn-primary btn-header">Entrar</button>
           <button class="btn-primary btn-header">Criar conta</button>
-        
         </div>
       </div>
     </header>
@@ -43,123 +46,180 @@
             receberem a população mundial.
           </p>
           <div class="hero-btn">
-            <button class="btn-primary btn-hero-primary">Adicionar à lista</button>
+            <button class="btn-primary btn-hero-primary">
+              Adicionar à lista
+            </button>
             <button class="btn-primary btn-hero-secondary">Ver detalhes</button>
           </div>
         </div>
       </section>
       <section class="carousel">
-        <h1 class="title-carousel">Top 10 melhores avaliados</h1>
-        <div class="container-carousel" id="container-carousel">
-          <div class="card-carousel">
-            <div class="card-poster-wrapper">
-              <img
-                class="card-poster"
-                src="../codigo-fonte/assets/img/posterstranger.webp"
-                alt="Poster de Stranger Things"
-              />
-
-              <div class="card-info">
-                <div class="card-meta">
-                  <span class="card-rating"
-                    ><i class="fa-solid fa-star"></i> 9.2</span
-                  >
-                </div>
-                <h3 class="card-title">Stranger Things</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card-carousel">
-            <div class="card-poster-wrapper">
-              <img
-                class="card-poster"
-                src="https://image.tmdb.org/t/p/w500/8pt3vla66z78E7I787Et79iTY1M.jpg"
-                alt="Poster de O Poderoso Chefão"
-              />
-
-              <div class="card-info">
-                <div class="card-meta">
-                  <span class="card-rating"
-                    ><i class="fa-solid fa-star"></i> 9.2</span
-                  >
-                </div>
-                <h3 class="card-title">O Poderoso Chefão</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card-carousel">
-            <div class="card-poster-wrapper">
-              <img
-                class="card-poster"
-                src="https://image.tmdb.org/t/p/w500/8pt3vla66z78E7I787Et79iTY1M.jpg"
-                alt="Poster de O Poderoso Chefão"
-              />
-
-              <div class="card-info">
-                <div class="card-meta">
-                  <span class="card-rating"
-                    ><i class="fa-solid fa-star"></i> 9.2</span
-                  >
-                </div>
-                <h3 class="card-title">O Poderoso Chefão</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card-carousel">
-            <div class="card-poster-wrapper">
-              <img
-                class="card-poster"
-                src="https://image.tmdb.org/t/p/w500/8pt3vla66z78E7I787Et79iTY1M.jpg"
-                alt="Poster de O Poderoso Chefão"
-              />
-
-              <div class="card-info">
-                <div class="card-meta">
-                  <span class="card-rating"
-                    ><i class="fa-solid fa-star"></i> 9.2</span
-                  >
-                </div>
-                <h3 class="card-title">O Poderoso Chefão</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card-carousel">
-            <div class="card-poster-wrapper">
-              <img
-                class="card-poster"
-                src="https://image.tmdb.org/t/p/w500/8pt3vla66z78E7I787Et79iTY1M.jpg"
-                alt="Poster de O Poderoso Chefão"
-              />
-
-              <div class="card-info">
-                <div class="card-meta">
-                  <span class="card-rating"
-                    ><i class="fa-solid fa-star"></i> 9.2</span
-                  >
-                </div>
-                <h3 class="card-title">O Poderoso Chefão</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card-carousel">
-            <div class="card-poster-wrapper">
-              <img
-                class="card-poster"
-                src="https://image.tmdb.org/t/p/w500/8pt3vla66z78E7I787Et79iTY1M.jpg"
-                alt="Poster de O Poderoso Chefão"
-              />
-
-              <div class="card-info">
-                <div class="card-meta">
-                  <span class="card-rating"
-                    ><i class="fa-solid fa-star"></i> 9.2</span
-                  >
-                </div>
-                <h3 class="card-title">O Poderoso Chefão</h3>
-              </div>
-            </div>
-          </div>
+        <div class="info-carousel">
+          <div class="title-wrapper"
+        <h1 class="title-carousel"><i class="fa-solid fa-ranking-star"></i>Destaques Imperdíveis</h1>
+        <h2>As obras mais aclamadas pela nossa comunidade</h2>
         </div>
+         <div class="carousel-wrapper">
+    
+    <!-- Botão Voltar -->
+    <button class="carousel-btn btn-prev" aria-label="Voltar">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+        
+        <div class="container-carousel" id="container-carousel">
+           
+          <div class="card-carousel">
+            <div class="card-container">
+              <div class="card">
+                <img
+                  class="card-poster"
+                  src="../codigo-fonte/assets/img/posterstranger.webp"
+                  alt="Poster de Stranger Things"
+                />
+                <div class="card-rating-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="card-rating">9.2</span> 
+                </div>
+              </div>
+
+              <div class="card-info">
+                <h3 class="card-title">Stranger Things</h3>
+                <div class="card-meta">
+                  <span class="card-year">2016</span>
+                  <span class="card-separator">•</span>
+                  <span class="card-category">Ficção Científica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="card-carousel">
+            <div class="card-container">
+              <div class="card">
+                <img
+                  class="card-poster"
+                  src="../codigo-fonte/assets/img/posterstranger.webp"
+                  alt="Poster de Stranger Things"
+                />
+                <div class="card-rating-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="card-rating">9.2</span> 
+                </div>
+              </div>
+
+              <div class="card-info">
+                <h3 class="card-title">Stranger Things</h3>
+                <div class="card-meta">
+                  <span class="card-year">2016</span>
+                  <span class="card-separator">•</span>
+                  <span class="card-category">Ficção Científica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="card-container">
+              <div class="card">
+                <img
+                  class="card-poster"
+                  src="../codigo-fonte/assets/img/posterstranger.webp"
+                  alt="Poster de Stranger Things"
+                />
+                <div class="card-rating-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="card-rating">9.2</span> 
+                </div>
+              </div>
+
+              <div class="card-info">
+                <h3 class="card-title">Stranger Things</h3>
+                <div class="card-meta">
+                  <span class="card-year">2016</span>
+                  <span class="card-separator">•</span>
+                  <span class="card-category">Ficção Científica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="card-container">
+              <div class="card">
+                <img
+                  class="card-poster"
+                  src="../codigo-fonte/assets/img/posterstranger.webp"
+                  alt="Poster de Stranger Things"
+                />
+                <div class="card-rating-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="card-rating">9.2</span> 
+                </div>
+              </div>
+
+              <div class="card-info">
+                <h3 class="card-title">Stranger Things</h3>
+                <div class="card-meta">
+                  <span class="card-year">2016</span>
+                  <span class="card-separator">•</span>
+                  <span class="card-category">Ficção Científica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="card-container">
+              <div class="card">
+                <img
+                  class="card-poster"
+                  src="../codigo-fonte/assets/img/posterstranger.webp"
+                  alt="Poster de Stranger Things"
+                />
+                <div class="card-rating-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="card-rating">9.2</span> 
+                </div>
+              </div>
+
+              <div class="card-info">
+                <h3 class="card-title">Stranger Things</h3>
+                <div class="card-meta">
+                  <span class="card-year">2016</span>
+                  <span class="card-separator">•</span>
+                  <span class="card-category">Ficção Científica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-carousel">
+            <div class="card-container">
+              <div class="card">
+                <img
+                  class="card-poster"
+                  src="../codigo-fonte/assets/img/posterstranger.webp"
+                  alt="Poster de Stranger Things"
+                />
+                <div class="card-rating-badge">
+                  <i class="fa-solid fa-star"></i>
+                  <span class="card-rating">9.2</span> 
+                </div>
+              </div>
+
+              <div class="card-info">
+                <h3 class="card-title">Stranger Things</h3>
+                <div class="card-meta">
+                  <span class="card-year">2016</span>
+                  <span class="card-separator">•</span>
+                  <span class="card-category">Ficção Científica</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button class="carousel-btn btn-next" aria-label="Avançar">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>            
+          
       </section>
     </main>
   </body>

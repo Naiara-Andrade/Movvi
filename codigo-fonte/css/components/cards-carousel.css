@@ -1,11 +1,32 @@
-
-.carousel{
-    padding: 40px clamp(15px, 2vw, 32px);
-  background-color: #0b1515;
-  
+.carousel {
+  padding: 40px clamp(10px, 2vw, 32px);
+  background-color: var(--dark-primary);
 }
 
-.title-carousel{
+.info-carousel h1{
+  margin:0;
+  font-size:var(--xlg);
+}
+
+.info-carousel i{
+  margin:0;
+  font-size:var(--xxlg);
+  color: var(--tertiary);
+}
+
+.info-carousel h2{
+  margin:0;
+  font-size:var(--lg);
+  font-family:var(----font-primary);
+  color: var(--primary);
+}
+
+.info-carousel{
+  margin:0;
+
+}
+
+.title-carousel {
   font-family: var(--font-secondary);
   font-size: var(--lg);
   color: #f4f9f5;
@@ -14,50 +35,97 @@
   letter-spacing: 1px;
 }
 
-.container-carousel{
+.container-carousel {
   display: flex;
   gap: 20px;
   overflow-x: auto; /* Ativa a rolagem horizontal quando os cards estourarem a tela */
   overflow-y: hidden; /* Garante que nada vaze para baixo */
   padding: 15px 10px; /* Espaço para o efeito de "salto" do hover não ser cortado */
-  
+  scroll-behavior: smooth; /* Adicionado para suavizar a rolagem das setas */
+
   /* Esconde a barra de rolagem padrão feia no Chrome/Safari */
   scrollbar-width: none;
-
 }
 
 .container-carousel::-webkit-scrollbar {
   display: none;
 }
 
-.card-carousel{
-  flex: 0 0 180px; /* IMPORTANTE: Impede o flexbox de esmagar o card. Cada um terá exatamente 180px */
-  background-color: var(--dark-secondary);
-  border-radius: 8px;
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%; /* Ajustado para centralizar com base na altura total do .container-carousel */
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: rgba(15, 15, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  opacity: 0; /* Escondidas por padrão */
+  transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Posicionamento das setas nas extremidades */
+.btn-prev { left: -10px; } /* Ajustado levemente para fora para não cobrir a arte do card */
+.btn-next { right: -10px; }
+
+/* Faz as setas aparecerem suavemente quando o usuário passa o mouse sobre o carrossel */
+.carousel-wrapper:hover .carousel-btn {
+  opacity: 1;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(0, 255, 204, 0.2);
+  border-color: rgba(0, 255, 204, 0.6);
+  color: rgba(0, 255, 204, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.card-carousel {
+  flex: 0 0 220px; /* IMPORTANTE: Impede o flexbox de esmagar o card. Cada um terá exatamente 180px */
+}
+
+
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  padding-top: 150%;
+  border: 1px solid rgba(92, 131, 123, 0.1);
+  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
   border: 1px solid rgba(92, 131, 123, 0.1);
 }
 
-.card-carousel:hover {
-transform: translateY(-8px);
-box-shadow: 0px 0px 8px 3px rgba(0,255,204,0.14);
-
-
-  border-color: rgba(0, 255, 204, 0.3);
-}
-
-.card-carousel:hover .card-info{
-  opacity: 1;
-  transform: translateY(0);
-
-}
-
-.card-poster-wrapper{
-      position: relative;
-  width: 100%;
-  padding-top: 150%; /* Proporção de aspecto do poster */
+.card:hover {
+  /* transform: translateY(-8px); */
+  transform: scale(1.03);
+  box-shadow: 0px 0px 8px 3px rgba(0, 255, 204, 0.14);
+  border-color: rgba(204, 184, 5, 0.301);
 }
 
 .card-poster {
@@ -69,31 +137,36 @@ box-shadow: 0px 0px 8px 3px rgba(0,255,204,0.14);
   object-fit: cover;
 }
 
-.card-info {
- position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 20px 12px;
-  background: linear-gradient(to top, rgba(11, 21, 21, 0.98) 0%, rgba(11, 21, 21, 0.85) 50%, rgba(11, 21, 21, 0.2) 100%);
-  
+.card-rating-badge{
+position: absolute;
+top: 10px;
+  left: 10px;
+  background-color: rgba(55, 54, 54, 0.7);
+padding: 4px 8px;
+  border-radius: 6px;
+  font-family: var(--font-secondary);
+  font-size:;
+  color: #ffae00;
+  font-weight: 700;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 6px;
-
-  opacity: 0; /* Invisível */
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  align-items: center;
+  gap: 4px;
   z-index: 2;
 }
 
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+ 
+}
+
 .card-title {
-font-family: var(--font-secondary);
-  font-size: 14px;
-  color: #ffffff;
-  font-weight: 500;
+  font-family: var(--font-secondary);
+  font-size: var(--lg);
+  color: var(--senary);
+  font-weight: 600;
   line-height: 1.3;
   margin: 0;
 }
@@ -101,21 +174,35 @@ font-family: var(--font-secondary);
 .card-meta {
   display: flex;
   align-items: center;
+  gap: 6px;
+  font-family: var(--font-secondary);
+  font-size:var(--sml);;
+  color: var(--quaternary);
 }
 
-.card-rating {
-font-family: var(--font-secondary);
-  font-size: 18px;
-  color: #00ffcc;
+.card-meta .card-category{
+   color: var(--tertiary);
+} 
+
+.card-separator {
+  color: #555;
+}
+
+.card-rating-badge {
+  font-family: var(--font-secondary);
+  font-size: var(--md);
+  color: var(--tertiary);
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.card-rating i {
-  margin-right: 4px;
+.card-rating-badge .card-rating{
+  color: var(--senary);
 }
 
 
-
+.card-rating i {
+  margin-right: 4px;
+}
