@@ -1,6 +1,9 @@
 .carousel {
   padding: 20px clamp(10px, 2vw, 32px);
   background-color: var(--dark-primary);
+  border-top: 1px solid #2d2d2d; 
+   
+ 
 }
 
 .top-carousel{
