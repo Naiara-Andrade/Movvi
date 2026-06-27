@@ -40,7 +40,7 @@
   /* 1. Criamos o gradiente no fundo do elemento */
   /* background: linear-gradient(45deg, #01f5fd, #01aa8e, #02c091, #00fd54a4, #03f05296); */
 
-  background: linear-gradient(45deg, #babd15, #cf9e0e, #d78f0a, #df8107);
+  background: linear-gradient(45deg, #ebee29, #cf9e0e, #d78f0a, #df8107);
   
   
   /* 2. Recortamos o fundo para que ele apareça APENAS dentro das letras */
@@ -119,7 +119,7 @@
 
 .carousel-btn {
   position: absolute;
-  top: 50%; /* Ajustado para centralizar com base na altura total do .container-carousel */
+  top: 50%; 
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
@@ -133,7 +133,7 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
-  opacity: 0; /* Escondidas por padrão */
+  opacity: 0; 
   transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -147,9 +147,8 @@
 }
 
 .carousel-btn:hover {
-  background-color: rgba(0, 255, 204, 0.2);
-  border-color: rgba(0, 255, 204, 0.6);
-  color: rgba(0, 255, 204, 1);
+
+  color: rgb(221, 200, 7);
   transform: translateY(-50%) scale(1.1);
 }
 
