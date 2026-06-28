@@ -1,0 +1,51 @@
+/* Container principal do rodapé */
+.main-footer {
+    display: flex;
+    justify-content: space-between; /* Empurra a info para a esquerda e o menu para a direita */
+    align-items: center;           /* Alinha tudo verticalmente no centro */
+    padding: 30px 50px;            /* Espaçamento interno */
+    background-color: #1a1a1a;     /* Fundo escuro moderno */
+    border-top: 1px solid #2d2d2d; /* Linha sutil no topo */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Bloco da esquerda: Logo + Copyright */
+.info-footer {
+    display: flex;
+    flex-direction: column;        /* Coloca o copyright abaixo do logo */
+    gap: 8px;                      /* Espaço entre o logo e o copyright */
+}
+
+.logo-footer {
+   font-size: 22px;
+   
+    
+}
+
+.footer-copyright {
+    color: #8c8c8c;
+    font-size: 13px;
+    margin: 0;
+}
+
+.footer-copyright .brand-name {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+
+
+/* Responsividade: Ajuste para celulares */
+@media (max-width: 600px) {
+    .main-footer {
+        flex-direction: column;    /* Empilha os blocos em telas pequenas */
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+    }
+    
+    .nav-menu ul {
+        justify-content: center;
+    }
+}
+

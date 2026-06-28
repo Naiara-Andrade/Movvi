@@ -37,7 +37,8 @@ body {
   font-family: var(--font-secondary);
   font-size: 16px;
   background-color: #0b1515;
-   padding: 0 170px;
+  padding: 0 170px;
+   
 }
 
 .btn-primary{
@@ -55,3 +56,4 @@ body {
    border-radius: 4px; 
   
 }
+
