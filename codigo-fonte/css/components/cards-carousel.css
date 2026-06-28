@@ -3,72 +3,61 @@
   background-color: var(--dark-primary);
 }
 
-.top-carousel{
-
+.top-carousel {
   padding: 10px;
-  
 }
 
-
-
-.title-wrapper{
+.title-wrapper {
   display: flex;
-  gap:15px;
- 
-
+  gap: 15px;
 }
 
- 
-.title-wrapper i{
-  margin:0;
-  font-size:var(--xxlg);
+.title-wrapper i {
+  margin: 0;
+  font-size: var(--xxlg);
   color: var(--tertiary);
 }
 
-
- .title-wrapper .title-carousel{
-  margin:0;
+.title-wrapper .title-carousel {
+  margin: 0;
   font-family: var(--font-secondary);
-   font-size:30px;
-   font-weight:bolder;
-  color: #f4f9f5;  
+  font-size: 30px;
+  font-weight: bolder;
+  color: #f4f9f5;
   letter-spacing: 1px;
 }
-
 
 .title-carousel {
   /* 1. Criamos o gradiente no fundo do elemento */
   /* background: linear-gradient(45deg, #01f5fd, #01aa8e, #02c091, #00fd54a4, #03f05296); */
 
   background: linear-gradient(45deg, #ebee29, #cf9e0e, #d78f0a, #df8107);
-  
-  
+
   /* 2. Recortamos o fundo para que ele apareça APENAS dentro das letras */
   -webkit-background-clip: text;
   background-clip: text; /* */
-  
+
   /* 3. Tornamos a cor do texto transparente para que o fundo gradiente apareça */
   -webkit-text-fill-color: transparent;
   color: transparent; /* */
-  
+
   /* Opcional: Garanta que o elemento seja inline-block para o gradiente renderizar certinho */
   display: inline-block;
 }
 
-
 .title-wrapper i.fa-trophy {
   /* Altere a cor se quiser para ouro puro */
-  color: #FFD700; 
+  color: #ffd700;
 
   /* O pulo do gato: animação constante */
   animation: brilhoTrofeu 2s infinite ease-in-out;
 }
 
-@keyframes brilhoTrofeu{
+@keyframes brilhoTrofeu {
   0% {
     text-shadow: 0 0 5px rgba(255, 215, 0, 0.4); /* Ouro suave */
   }
-   50% {
+  50% {
     text-shadow: 0 0 10px rgba(255, 223, 0, 0.9); /* Ouro mais forte */
   }
   100% {
@@ -86,30 +75,21 @@
   }
 }
 
-
-
-
-.info-carousel{
-  margin:0;
-
+.info-carousel {
+  margin: 0;
 }
 
-
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+}
 
 .container-carousel {
   display: flex;
   gap: 20px;
-  overflow-x: auto; /* Ativa a rolagem horizontal quando os cards estourarem a tela */
-  overflow-y: hidden; /* Garante que nada vaze para baixo */
+
   padding: 15px 10px; /* Espaço para o efeito de "salto" do hover não ser cortado */
-  scroll-behavior: smooth; /* Adicionado para suavizar a rolagem das setas */
-
-  /* Esconde a barra de rolagem padrão feia no Chrome/Safari */
-  scrollbar-width: none;
-}
-
-.container-carousel::-webkit-scrollbar {
-  display: none;
+  transition: transform 0.4s ease;
 }
 
 .carousel-wrapper {
@@ -119,7 +99,7 @@
 
 .carousel-btn {
   position: absolute;
-  top: 50%; 
+  top: 50%;
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
@@ -133,13 +113,20 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
-  opacity: 0; 
-  transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 /* Posicionamento das setas nas extremidades */
-.btn-prev { left: -10px; } /* Ajustado levemente para fora para não cobrir a arte do card */
-.btn-next { right: -10px; }
+.btn-prev {
+  left: -10px;
+} /* Ajustado levemente para fora para não cobrir a arte do card */
+.btn-next {
+  right: -10px;
+}
 
 /* Faz as setas aparecerem suavemente quando o usuário passa o mouse sobre o carrossel */
 .carousel-wrapper:hover .carousel-btn {
@@ -147,7 +134,6 @@
 }
 
 .carousel-btn:hover {
-
   color: rgb(221, 200, 7);
   transform: translateY(-50%) scale(1.1);
 }
@@ -155,8 +141,6 @@
 .card-carousel {
   flex: 0 0 220px; /* IMPORTANTE: Impede o flexbox de esmagar o card. Cada um terá exatamente 180px */
 }
-
-
 
 .card-container {
   display: flex;
@@ -197,15 +181,15 @@
   object-fit: cover;
 }
 
-.card-rating-badge{
-position: absolute;
-top: 10px;
+.card-rating-badge {
+  position: absolute;
+  top: 10px;
   left: 10px;
   background-color: rgba(55, 54, 54, 0.7);
-padding: 4px 8px;
+  padding: 4px 8px;
   border-radius: 6px;
   font-family: var(--font-secondary);
-  font-size:var(--sml);
+  font-size: var(--sml);
   color: #ffae00;
   font-weight: 700;
   display: flex;
@@ -219,7 +203,6 @@ padding: 4px 8px;
   flex-direction: column;
   justify-content: flex-end;
   gap: 4px;
- 
 }
 
 .card-title {
@@ -236,13 +219,13 @@ padding: 4px 8px;
   align-items: center;
   gap: 6px;
   font-family: var(--font-secondary);
-  font-size:var(--sml);;
+  font-size: var(--sml);
   color: var(--quaternary);
 }
 
-.card-meta .card-category{
-   color: var(--tertiary);
-} 
+.card-meta .card-category {
+  color: var(--tertiary);
+}
 
 .card-separator {
   color: #555;
@@ -258,10 +241,9 @@ padding: 4px 8px;
   gap: 6px;
 }
 
-.card-rating-badge .card-rating{
+.card-rating-badge .card-rating {
   color: var(--senary);
 }
-
 
 .card-rating i {
   margin-right: 4px;

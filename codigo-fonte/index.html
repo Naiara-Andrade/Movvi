@@ -67,9 +67,11 @@
          <div class="carousel-wrapper">
     
     <!-- Botão Voltar -->
-    <button class="carousel-btn btn-prev" aria-label="Voltar">
+    <button id="btn-prev" class="carousel-btn btn-prev" aria-label="Voltar">
       <i class="fa-solid fa-chevron-left"></i>
     </button>
+
+    <div class="carousel-viewport">
         
         <div class="container-carousel" id="container-carousel">
            
@@ -219,13 +221,17 @@
               </div>
             </div>
           </div>
-          
-          <button class="carousel-btn btn-next" aria-label="Avançar">
+          </div> 
+          <button id="btn-next" class="carousel-btn btn-next" aria-label="Avançar">
       <i class="fa-solid fa-chevron-right"></i>
     </button>
   </div>            
-          
+         
       </section>
     </main>
+    <script src="./js/carousel.js"></script>
+
+   
   </body>
+
 </html>
