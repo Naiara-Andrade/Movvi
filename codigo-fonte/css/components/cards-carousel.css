@@ -85,14 +85,14 @@
 .carousel-viewport {
   overflow: hidden;
   width: 100%;
+  padding:10px;
 }
 
 .container-carousel {
   display: flex;
-  gap: 20px;
-
-  padding: 15px 10px; /* Espaço para o efeito de "salto" do hover não ser cortado */
+  gap: 15px;
   transition: transform 0.4s ease;
+ 
 }
 
 .carousel-wrapper {
@@ -142,7 +142,7 @@
 }
 
 .card-carousel {
-  flex: 0 0 220px; /* IMPORTANTE: Impede o flexbox de esmagar o card. Cada um terá exatamente 180px */
+  flex: 0 0 190px; /* IMPORTANTE: Impede o flexbox de esmagar o card. Cada um terá exatamente 180px */
 }
 
 .card-container {
