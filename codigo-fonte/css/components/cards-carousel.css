@@ -142,7 +142,7 @@
 }
 
 .card-carousel {
-  flex: 0 0 190px; /* IMPORTANTE: Impede o flexbox de esmagar o card. Cada um terá exatamente 180px */
+   flex: 0 0 calc((100% - 50px) / 4); /* IMPORTANTE: Impede o flexbox de esmagar o card. Cada um terá exatamente 180px */
 }
 
 .card-container {
@@ -250,4 +250,24 @@
 
 .card-rating i {
   margin-right: 4px;
+}
+
+/* Desktop */
+.card-carousel {
+    flex: 0 0 calc((100% - 45px) / 4);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .card-carousel {
+        flex: 0 0 calc((100% - 30px) / 3);
+    }
+}
+
+/* Celular */
+@media (max-width: 768px) {
+    .card-carousel {
+        flex: 0 0 calc((100% - 15px) / 2);
+    }
+}
 }
