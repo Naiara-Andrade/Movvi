@@ -4,16 +4,25 @@
   display: flex;
   align-items: center; /* Alinha o conteúdo verticalmente no centro */
   /* Conexão 1: Alinhamento lateral idêntico ao do Header */
-  padding: 0 clamp(15px, 2vw, 32px);
+  /* padding: 0 clamp(15px, 2vw, 32px); */
+  overflow: hidden; /*ocultar qualquer conteúdo que ultrapasse o tamanho limite (largura ou altura) de um elemento */
+padding: 0 clamp(25px, 2vw, 32px);
 
-  /* DADO MOCKADO: Uma imagem temporária de alta qualidade para testar o layout */
-  background-image: url("https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925");
-  background-size: cover; /* Força a imagem a cobrir o espaço sem distorcer */
-  background-position: center; /* Mantém o centro da imagem sempre visível */
-  background-repeat: no-repeat;
-  color: #ffffff; /* Texto sempre branco para contraste */
-  overflow: hidden; /*ocultar qualquer conteúdo que ultrapasse o tamanho limite (largura ou altura) de um elemento*/
+  
+  
 }
+
+.hero-image {
+  position: absolute;
+   inset: 0;
+  height: 100%; /* Ocupa 80% da altura da tela, ideal para banners */
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  z-index: 0;/*ocultar qualquer conteúdo que ultrapasse o tamanho limite (largura ou altura) de um elemento */
+}
+
 
 /*Película escura com transição suave vindo do verde escuro do seu header */
 .hero__overlay {
@@ -36,6 +45,7 @@
   z-index: 2;
   max-width: 500px; /* Limita a largura para o texto não ficar gigante em telas grandes*/
   animation: fadeInUp 1s ease-out forwards;
+  padding-left: clamp(20px, 6vw, 80px);
 }
 
 .hero__content p {
@@ -43,19 +53,14 @@
 }
 
 .hero__title {
-  /* Conexão 2: Mesma fonte sofisticada do corpo do site, mas bem grande */
+  
   font-family: var(--font-secondary);
-  font-size: clamp(
-    2rem,
-    5vw,
-    3.5rem
-  ); /* Responsivo: diminui em telas menores */
+  font-size: clamp( 2rem, 5vw, 3.5rem); /* Responsivo: diminui em telas menores */
   font-weight: 700;
   margin-bottom: 20px;
   color: #f4f9f5;
-
-  /* Um brilho bem sutil para lembrar o estilo da logo */
-  text-shadow: 0 0 15px rgba(9, 207, 168, 0.3);
+ 
+  text-shadow: 0 0 20px rgba(9, 207, 168, 0.3);
 }
 
 .hero__description {
