@@ -131,6 +131,49 @@
   transform: scale(1.03);
 }
 
+.hero-indicators{
+    position:absolute;
+
+    left:50%;
+    bottom:30px;
+
+    transform:translateX(-50%);
+
+    display:flex;
+    gap:10px;
+
+    z-index:5;
+}
+
+.hero-indicator{
+
+    width:30px;
+    height:5px;
+
+    border:none;
+    border-radius:999px;
+
+    background:rgba(255,255,255,.30);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.hero-indicator.active{
+
+    width:42px;
+
+    background:var(--tertiary);
+
+    box-shadow:0 0 8px rgba(212,175,55,.5);
+}
+
+.hero-indicator:hover {
+    background-color: rgba(255,255,255,0.6);
+}
+
+
 /* Ajuste responsivo para telas menores */
 @media (max-width: 650px) {
   .hero {
