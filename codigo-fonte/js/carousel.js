@@ -1,42 +1,93 @@
-const btnPrev = document.getElementById("btn-prev"); /*retorna o btn-prev*/
-const btnNext = document.getElementById("btn-next"); /*retorna o btn-next*/
-const containerCarousel = document.getElementById("container-carousel"); /*retorna o container-carousel*/
-const firstCard = document.querySelector(".card-carousel"); /*retorna o 1º card*/
-const carouselStyle = getComputedStyle(containerCarousel); /*Obtém o CSS calculado pelo navegador.*/
-const cardWidth = firstCard.offsetWidth; /*devolve a largura real do elemento.*/
-const gap = parseInt(carouselStyle.gap); /*retorna string "20px", parseInt() remove o px e tranforma em número.*/
-const cards = document.querySelectorAll(".card-carousel");  /* retorna lista de card*/
 
-let currentIndex = 0; /*Cria a variável que guarda a posição atual do carrossel.*/
+let carouselMovies = [];
+const CAROUSEL_URL =
+`https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&api_key=${API_KEY}`;
 
-function updateCarousel() { /*Cria uma função responsável por atualizar a posição do carrossel*/
+const containerCarousel = document.getElementById("container-carousel"); 
 
-const offset = currentIndex * (cardWidth + gap); /*Calcula quantos pixels o carrossel deve se mover.*/
+async function loadCarouselMovies() {
 
-containerCarousel.style.transform = `translateX(-${offset}px)`; /*Aplica um estilo CSS pelo JavaScript.*/
+    const response = await fetch(CAROUSEL_URL);
+
+    const data = await response.json();
+
+    carouselMovies = data.results;
+
+    createCarousel();
 
 }
 
-const visibleCards = 5; /*Quantidade de cards visíveis na tela.*/
 
-const maxIndex = cards.length - visibleCards; /*Calcula o último índice permitido.*/
 
-btnNext.addEventListener("click",() => {   /*evento quando houver o click e a função que será executada*/
- 
-  if (currentIndex < maxIndex) { /*O índice atual ainda é menor que o último permitido?*/
+function createCard(movie){
 
-    currentIndex++; /*incrementa*/
-   updateCarousel(); /*função responsável por mover o carrossel.*/
-  }
-    
+const cardCarousel = document.createElement("div");
+
+cardCarousel.classList.add("card-carousel");
+
+const cardContainer = document.createElement("div");
+
+cardContainer.classList.add("card-container");
+
+cardCarousel.appendChild(cardContainer);
+
+const card = document.createElement("div");
+
+card.classList.add("card");
+
+cardContainer.appendChild(card);
+
+const poster = document.createElement("img");
+
+poster.classList.add("card-poster");
+
+poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+poster.alt = movie.title;
+
+card.appendChild(poster);
+
+const ratingBadge = document.createElement("div");
+ratingBadge.classList.add("card-rating-badge");
+
+//Ícone da estrela 
+const starIcon = document.createElement("i");
+
+starIcon.classList.add("fa-solid");
+starIcon.classList.add("fa-star");
+
+//Nota 
+const rating = document.createElement("span");
+rating.classList.add("card-rating");
+rating.textContent = movie.vote_average.toFixed(1);
+
+// Monta o badge (coloca icon e avaliação dentro do badge   )
+ratingBadge.appendChild(starIcon);
+
+ratingBadge.appendChild(rating);
+
+// Coloca o badge dentro do card
+card.appendChild(ratingBadge);
+
+const cardInfo = document.createElement("div");
+cardInfo.classList.add("card-info");
+cardContainer.appendChild(cardInfo); //irmão de card, dentro de card-container
+
+return cardCarousel;
+
+
+}
+
+function createCarousel() {
+
+    // Limpa o carrossel antes de adicionar os cards
+    containerCarousel.innerHTML = "";
+
+    carouselMovies.forEach((movie) => {
+
+        const card = createCard(movie);
+
+        containerCarousel.appendChild(card);
+
     });
 
-btnPrev.addEventListener("click",() => { 
-
-if (currentIndex > 0) { /*Verifica se ainda é possível voltar uma posição.*/
-
-    currentIndex--; /*decrementa*/
-   updateCarousel(); /*função responsável por mover o carrossel.*/
-  }
-    
-    });
+}
