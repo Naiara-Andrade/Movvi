@@ -1,7 +1,12 @@
 
 let carouselMovies = [];
+let movieGenres = [];
+
 const CAROUSEL_URL =
 `https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&api_key=${API_KEY}`;
+
+const GENRES_URL =
+`https://api.themoviedb.org/3/genre/movie/list?language=pt-BR&api_key=${API_KEY}`;
 
 const containerCarousel = document.getElementById("container-carousel"); 
 
@@ -17,7 +22,12 @@ async function loadCarouselMovies() {
 
 }
 
-
+async function loadMovieGenres() {
+   const response = await fetch(GENRES_URL);
+      const data = await response.json();
+      movieGenres = data.genres;
+    console.log(movieGenres);
+}
 
 function createCard(movie){
 
@@ -41,7 +51,12 @@ const poster = document.createElement("img");
 
 poster.classList.add("card-poster");
 
+
+if (movie.poster_path){
 poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+}else{
+     poster.src ="assets/img/poster-default.png";
+}
 poster.alt = movie.title;
 
 card.appendChild(poster);
@@ -58,7 +73,11 @@ starIcon.classList.add("fa-star");
 //Nota 
 const rating = document.createElement("span");
 rating.classList.add("card-rating");
-rating.textContent = movie.vote_average.toFixed(1);
+if (movie.vote_average) {
+    rating.textContent = movie.vote_average.toFixed(1);
+} else {
+    rating.textContent = "N/A";
+}
 
 // Monta o badge (coloca icon e avaliação dentro do badge   )
 ratingBadge.appendChild(starIcon);
@@ -71,6 +90,54 @@ card.appendChild(ratingBadge);
 const cardInfo = document.createElement("div");
 cardInfo.classList.add("card-info");
 cardContainer.appendChild(cardInfo); //irmão de card, dentro de card-container
+
+const title = document.createElement("h3");
+title.classList.add("card-title");
+title.textContent = movie.title;
+cardInfo.appendChild(title);
+
+const cardMeta = document.createElement("div");
+cardMeta.classList.add("card-meta");
+cardInfo.appendChild(cardMeta);
+
+const cardYear = document.createElement("span");
+const cardSeparator = document.createElement("span");
+const cardCategory = document.createElement("span");
+
+cardYear.classList.add("card-year");
+cardSeparator.classList.add("card-separator");
+cardCategory.classList.add("card-category");
+
+
+if(movie.release_date){
+cardYear.textContent = movie.release_date.substring(0, 4);
+}else{ 
+cardYear.textContent = "N/A"; 
+}
+
+cardSeparator.textContent = "•";
+
+if (movie.genre_ids[0]) {
+
+    const genreId = movie.genre_ids[0];
+
+    const genre = movieGenres.find(
+        (genre) => genre.id === genreId
+    );
+
+    if (genre) {
+        cardCategory.textContent = genre.name;
+    } else {
+        cardCategory.textContent = "N/A";
+    }
+
+} else {
+    cardCategory.textContent = "N/A";
+}
+
+cardMeta.appendChild(cardYear); 
+cardMeta.appendChild(cardSeparator); 
+cardMeta.appendChild(cardCategory); 
 
 return cardCarousel;
 
@@ -91,3 +158,10 @@ function createCarousel() {
     });
 
 }
+
+async function initCarousel() {
+    await loadMovieGenres();
+    await loadCarouselMovies();
+}
+
+initCarousel();
