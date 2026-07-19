@@ -10,6 +10,32 @@ const GENRES_URL =
 
 const containerCarousel = document.getElementById("container-carousel"); 
 
+const btnPrev = document.createElement("button");
+btnPrev.classList.add("carousel-btn","btn-prev");
+btnPrev.id = "btn-prev";
+btnPrev.setAttribute("aria-label","Anterior");
+
+const prevIcon = document.createElement("i");
+prevIcon.classList.add("fa-solid", "fa-chevron-left");
+btnPrev.appendChild(prevIcon); 
+
+const btnNext = document.createElement("button");
+btnNext.classList.add("carousel-btn","btn-next");
+btnNext.id = "btn-next";
+btnNext.setAttribute("aria-label","Próximo");
+
+const nextIcon = document.createElement("i");
+nextIcon.classList.add("fa-solid", "fa-chevron-right");
+btnNext.appendChild(nextIcon); 
+
+const carouselWrapper = document.querySelector(".carousel-wrapper");
+const carouselViewport = document.querySelector(".carousel-viewport");
+carouselWrapper.insertBefore(btnPrev, carouselViewport); // Insira btnPrev dentro de carouselWrapper, antes de carouselViewport.
+carouselWrapper.appendChild(btnNext);
+
+
+
+
 async function loadCarouselMovies() {
 
     const response = await fetch(CAROUSEL_URL);
@@ -165,3 +191,30 @@ async function initCarousel() {
 }
 
 initCarousel();
+
+
+let currentIndex = 0;
+
+function updateCarousel() {
+const firstCard = document.querySelector(".card-carousel");
+const cardWidth = firstCard.offsetWidth; //retornar a largura do 1º card 
+const carouselStyle = getComputedStyle(containerCarousel); //retorna o estilo do container do carrossel
+const gap = parseInt(carouselStyle.gap); //retorna o gap entre os cards 
+const offset = currentIndex * (cardWidth + gap); // calcula o deslocamento total com base no índice atual e na largura do card + gap
+containerCarousel.style.transform = `translateX(-${offset}px)`; //aplica a transformação de deslocamento ao container do carrossel
+
+}
+
+btnNext.addEventListener("click", () => {
+        currentIndex++; 
+    updateCarousel();
+});
+
+btnPrev.addEventListener("click", () => {
+
+   if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+    }
+});
+
