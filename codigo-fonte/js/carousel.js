@@ -206,8 +206,14 @@ containerCarousel.style.transform = `translateX(-${offset}px)`; //aplica a trans
 }
 
 btnNext.addEventListener("click", () => {
-        currentIndex++; 
-    updateCarousel();
+       
+     const maxIndex = 5;
+
+    if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+    }  
+       
 });
 
 btnPrev.addEventListener("click", () => {
