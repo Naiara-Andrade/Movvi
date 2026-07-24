@@ -1,6 +1,6 @@
-
 let carouselMovies = [];
 let movieGenres = [];
+let currentIndex = 0;
 
 const CAROUSEL_URL =
 `https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&api_key=${API_KEY}`;
@@ -8,171 +8,148 @@ const CAROUSEL_URL =
 const GENRES_URL =
 `https://api.themoviedb.org/3/genre/movie/list?language=pt-BR&api_key=${API_KEY}`;
 
-const containerCarousel = document.getElementById("container-carousel"); 
+const containerCarousel = document.getElementById("container-carousel");
+const carouselWrapper = document.querySelector(".carousel-wrapper");
+const carouselViewport = document.querySelector(".carousel-viewport");
 
 const btnPrev = document.createElement("button");
-btnPrev.classList.add("carousel-btn","btn-prev");
+btnPrev.classList.add("carousel-btn", "btn-prev");
 btnPrev.id = "btn-prev";
-btnPrev.setAttribute("aria-label","Anterior");
+btnPrev.setAttribute("aria-label", "Anterior");
 
 const prevIcon = document.createElement("i");
 prevIcon.classList.add("fa-solid", "fa-chevron-left");
-btnPrev.appendChild(prevIcon); 
+btnPrev.appendChild(prevIcon);
 
 const btnNext = document.createElement("button");
-btnNext.classList.add("carousel-btn","btn-next");
+btnNext.classList.add("carousel-btn", "btn-next");
 btnNext.id = "btn-next";
-btnNext.setAttribute("aria-label","Próximo");
+btnNext.setAttribute("aria-label", "Próximo");
 
 const nextIcon = document.createElement("i");
 nextIcon.classList.add("fa-solid", "fa-chevron-right");
-btnNext.appendChild(nextIcon); 
+btnNext.appendChild(nextIcon);
 
-const carouselWrapper = document.querySelector(".carousel-wrapper");
-const carouselViewport = document.querySelector(".carousel-viewport");
-carouselWrapper.insertBefore(btnPrev, carouselViewport); // Insira btnPrev dentro de carouselWrapper, antes de carouselViewport.
+carouselWrapper.insertBefore(btnPrev, carouselViewport);
 carouselWrapper.appendChild(btnNext);
 
+async function loadMovieGenres() {
+    const response = await fetch(GENRES_URL);
+    const data = await response.json();
 
-
+    movieGenres = data.genres;
+}
 
 async function loadCarouselMovies() {
-
     const response = await fetch(CAROUSEL_URL);
-
     const data = await response.json();
 
     carouselMovies = data.results;
 
     createCarousel();
-
 }
 
-async function loadMovieGenres() {
-   const response = await fetch(GENRES_URL);
-      const data = await response.json();
-      movieGenres = data.genres;
-    console.log(movieGenres);
-}
+function createCard(movie) {
 
-function createCard(movie){
+    const cardCarousel = document.createElement("div");
+    cardCarousel.classList.add("card-carousel");
 
-const cardCarousel = document.createElement("div");
+    const cardContainer = document.createElement("div");
+    cardContainer.classList.add("card-container");
+    cardCarousel.appendChild(cardContainer);
 
-cardCarousel.classList.add("card-carousel");
+    const card = document.createElement("div");
+    card.classList.add("card");
+    cardContainer.appendChild(card);
 
-const cardContainer = document.createElement("div");
+    const poster = document.createElement("img");
+    poster.classList.add("card-poster");
 
-cardContainer.classList.add("card-container");
+    if (movie.poster_path) {
+        poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    } else {
+        poster.src = "assets/img/poster-default.png";
+    }
 
-cardCarousel.appendChild(cardContainer);
+    poster.alt = movie.title;
+    card.appendChild(poster);
 
-const card = document.createElement("div");
+    const ratingBadge = document.createElement("div");
+    ratingBadge.classList.add("card-rating-badge");
 
-card.classList.add("card");
+    const starIcon = document.createElement("i");
+    starIcon.classList.add("fa-solid", "fa-star");
 
-cardContainer.appendChild(card);
+    const rating = document.createElement("span");
+    rating.classList.add("card-rating");
 
-const poster = document.createElement("img");
+    if (movie.vote_average) {
+        rating.textContent = movie.vote_average.toFixed(1);
+    } else {
+        rating.textContent = "N/A";
+    }
 
-poster.classList.add("card-poster");
+    ratingBadge.appendChild(starIcon);
+    ratingBadge.appendChild(rating);
 
+    card.appendChild(ratingBadge);
 
-if (movie.poster_path){
-poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-}else{
-     poster.src ="assets/img/poster-default.png";
-}
-poster.alt = movie.title;
+    const cardInfo = document.createElement("div");
+    cardInfo.classList.add("card-info");
+    cardContainer.appendChild(cardInfo);
 
-card.appendChild(poster);
+    const title = document.createElement("h3");
+    title.classList.add("card-title");
+    title.textContent = movie.title;
+    cardInfo.appendChild(title);
 
-const ratingBadge = document.createElement("div");
-ratingBadge.classList.add("card-rating-badge");
+    const cardMeta = document.createElement("div");
+    cardMeta.classList.add("card-meta");
+    cardInfo.appendChild(cardMeta);
 
-//Ícone da estrela 
-const starIcon = document.createElement("i");
+    const cardYear = document.createElement("span");
+    cardYear.classList.add("card-year");
 
-starIcon.classList.add("fa-solid");
-starIcon.classList.add("fa-star");
+    if (movie.release_date) {
+        cardYear.textContent = movie.release_date.substring(0, 4);
+    } else {
+        cardYear.textContent = "N/A";
+    }
 
-//Nota 
-const rating = document.createElement("span");
-rating.classList.add("card-rating");
-if (movie.vote_average) {
-    rating.textContent = movie.vote_average.toFixed(1);
-} else {
-    rating.textContent = "N/A";
-}
+    const cardSeparator = document.createElement("span");
+    cardSeparator.classList.add("card-separator");
+    cardSeparator.textContent = "•";
 
-// Monta o badge (coloca icon e avaliação dentro do badge   )
-ratingBadge.appendChild(starIcon);
+    const cardCategory = document.createElement("span");
+    cardCategory.classList.add("card-category");
 
-ratingBadge.appendChild(rating);
+    if (movie.genre_ids[0]) {
 
-// Coloca o badge dentro do card
-card.appendChild(ratingBadge);
+        const genreId = movie.genre_ids[0];
 
-const cardInfo = document.createElement("div");
-cardInfo.classList.add("card-info");
-cardContainer.appendChild(cardInfo); //irmão de card, dentro de card-container
+        const genre = movieGenres.find(
+            (genre) => genre.id === genreId
+        );
 
-const title = document.createElement("h3");
-title.classList.add("card-title");
-title.textContent = movie.title;
-cardInfo.appendChild(title);
+        if (genre) {
+            cardCategory.textContent = genre.name;
+        } else {
+            cardCategory.textContent = "N/A";
+        }
 
-const cardMeta = document.createElement("div");
-cardMeta.classList.add("card-meta");
-cardInfo.appendChild(cardMeta);
-
-const cardYear = document.createElement("span");
-const cardSeparator = document.createElement("span");
-const cardCategory = document.createElement("span");
-
-cardYear.classList.add("card-year");
-cardSeparator.classList.add("card-separator");
-cardCategory.classList.add("card-category");
-
-
-if(movie.release_date){
-cardYear.textContent = movie.release_date.substring(0, 4);
-}else{ 
-cardYear.textContent = "N/A"; 
-}
-
-cardSeparator.textContent = "•";
-
-if (movie.genre_ids[0]) {
-
-    const genreId = movie.genre_ids[0];
-
-    const genre = movieGenres.find(
-        (genre) => genre.id === genreId
-    );
-
-    if (genre) {
-        cardCategory.textContent = genre.name;
     } else {
         cardCategory.textContent = "N/A";
     }
 
-} else {
-    cardCategory.textContent = "N/A";
-}
+    cardMeta.appendChild(cardYear);
+    cardMeta.appendChild(cardSeparator);
+    cardMeta.appendChild(cardCategory);
 
-cardMeta.appendChild(cardYear); 
-cardMeta.appendChild(cardSeparator); 
-cardMeta.appendChild(cardCategory); 
-
-return cardCarousel;
-
-
+    return cardCarousel;
 }
 
 function createCarousel() {
 
-    // Limpa o carrossel antes de adicionar os cards
     containerCarousel.innerHTML = "";
 
     carouselMovies.forEach((movie) => {
@@ -185,42 +162,45 @@ function createCarousel() {
 
 }
 
+function updateCarousel() {
+
+    const firstCard = document.querySelector(".card-carousel");
+
+    const cardWidth = firstCard.offsetWidth;
+
+    const carouselStyle = getComputedStyle(containerCarousel);
+
+    const gap = parseInt(carouselStyle.gap);
+
+    const offset = currentIndex * (cardWidth + gap);
+
+    containerCarousel.style.transform = `translateX(-${offset}px)`;
+
+}
+
 async function initCarousel() {
     await loadMovieGenres();
     await loadCarouselMovies();
 }
 
-initCarousel();
-
-
-let currentIndex = 0;
-
-function updateCarousel() {
-const firstCard = document.querySelector(".card-carousel");
-const cardWidth = firstCard.offsetWidth; //retornar a largura do 1º card 
-const carouselStyle = getComputedStyle(containerCarousel); //retorna o estilo do container do carrossel
-const gap = parseInt(carouselStyle.gap); //retorna o gap entre os cards 
-const offset = currentIndex * (cardWidth + gap); // calcula o deslocamento total com base no índice atual e na largura do card + gap
-containerCarousel.style.transform = `translateX(-${offset}px)`; //aplica a transformação de deslocamento ao container do carrossel
-
-}
-
 btnNext.addEventListener("click", () => {
-       
-     const maxIndex = 5;
+
+    const maxIndex = 5;
 
     if (currentIndex < maxIndex) {
         currentIndex++;
         updateCarousel();
-    }  
-       
+    }
+
 });
 
 btnPrev.addEventListener("click", () => {
 
-   if (currentIndex > 0) {
+    if (currentIndex > 0) {
         currentIndex--;
         updateCarousel();
     }
+
 });
 
+initCarousel();
