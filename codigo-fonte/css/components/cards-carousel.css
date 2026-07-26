@@ -81,11 +81,10 @@
 
 .carousel-viewport {
   overflow: hidden;
-   
   width: 100%;
+  min-height: 370px;
   max-height: 400px;
   padding: 15px;
-  
 
 
 }
@@ -94,15 +93,13 @@
   display: flex;
   gap: 15px;
   transition: transform 0.4s ease;
-
-  
-  
    
 }
 
 .carousel-wrapper {
   position: relative;
   width: 100%;
+ 
 }
 
 .carousel-btn {
@@ -153,14 +150,13 @@
   flex-direction: column;
   justify-content: center;
   flex: 0 0 calc((100% - 60px) / 5);
- height: 100%;
+  height: 100%;
  padding-top: 15px;
   
 }
 
 .card-wrapper {
- 
-   display: flex;
+    display: flex;
     width:100%;
    flex-direction: column;
   gap: 10px;
