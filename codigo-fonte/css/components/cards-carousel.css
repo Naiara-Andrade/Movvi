@@ -6,7 +6,7 @@
 }
 
 .top-carousel {
-  /* padding: 10px; */
+  padding: 10px;
 }
 
 .title-wrapper {
@@ -82,17 +82,18 @@
 .carousel-viewport {
   overflow: hidden;
   width: 100%;
-  min-height: 370px;
-  max-height: 400px;
-  padding: 15px;
-
+  height: 390px;
+  padding: 15px 0 0 0;
 
 }
 
 .container-carousel {
   display: flex;
+  align-items: flex-start;
+  height:100%;
   gap: 15px;
   transition: transform 0.4s ease;
+ 
    
 }
 
@@ -148,10 +149,11 @@
 .card-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:flex-start;
+  height:100%;
   flex: 0 0 calc((100% - 60px) / 5);
-  height: 100%;
- padding-top: 15px;
+  
+ 
   
 }
 
@@ -176,7 +178,6 @@
     transform 0.3s ease,
     box-shadow 0.3s ease,
     border-color 0.3s ease;
-  /* border: 1px solid rgba(92, 131, 123, 0.1); */
   
 }
 
@@ -268,28 +269,3 @@
 
 
 
-
-
-/* Tablet */
-@media (max-width: 992px) {
-
-
-
-    .card-container {
-        flex: 0 0 calc((100% - 30px) / 3);
-        
-   
-    }
-   
-}
-
-/* Celular */
-@media (max-width: 768px) {
-    .card-container {
-        flex: 0 0 calc((100% - 15px) / 2);
-      
-    }
-      /* .carousel-viewport {
-        max-height: 350px;
-      } */
-}

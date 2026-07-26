@@ -35,17 +35,4 @@
 
 
 
-/* Responsividade: Ajuste para celulares */
-@media (max-width: 600px) {
-    .main-footer {
-        flex-direction: column;    /* Empilha os blocos em telas pequenas */
-        text-align: center;
-        gap: 24px;
-        padding: 30px 20px;
-    }
-    
-    .nav-menu ul {
-        justify-content: center;
-    }
-}
 
