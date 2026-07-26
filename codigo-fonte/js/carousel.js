@@ -51,16 +51,16 @@ async function loadCarouselMovies() {
 
 function createCard(movie) {
 
-    const cardCarousel = document.createElement("div");
-    cardCarousel.classList.add("card-carousel");
-
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("card-container");
-    cardCarousel.appendChild(cardContainer);
+
+    const cardWrapper = document.createElement("div");
+cardWrapper.classList.add("card-wrapper");
+cardContainer.appendChild(cardWrapper);
 
     const card = document.createElement("div");
     card.classList.add("card");
-    cardContainer.appendChild(card);
+    cardWrapper.appendChild(card);
 
     const poster = document.createElement("img");
     poster.classList.add("card-poster");
@@ -94,9 +94,12 @@ function createCard(movie) {
 
     card.appendChild(ratingBadge);
 
+
+
+
     const cardInfo = document.createElement("div");
     cardInfo.classList.add("card-info");
-    cardContainer.appendChild(cardInfo);
+    cardWrapper.appendChild(cardInfo);
 
     const title = document.createElement("h3");
     title.classList.add("card-title");
@@ -145,7 +148,7 @@ function createCard(movie) {
     cardMeta.appendChild(cardSeparator);
     cardMeta.appendChild(cardCategory);
 
-    return cardCarousel;
+    return cardContainer;
 }
 
 function createCarousel() {
@@ -164,7 +167,7 @@ function createCarousel() {
 
 function updateCarousel() {
 
-    const firstCard = document.querySelector(".card-carousel");
+    const firstCard = document.querySelector(".card-container");
 
     const cardWidth = firstCard.offsetWidth;
 
