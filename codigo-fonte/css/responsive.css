@@ -1,15 +1,13 @@
 /* Desktop */
 @media (max-width: 1200px) {
 
-/*HEADER*/
+ /*HEADER*/
     .logo-header {
     margin-right: 20px; /* Reduz o espaço do logo para dar vaga ao resto */
     font-size: calc(var(--xxlg) * 0.85); /* Encolhe o logo de leve */
   }
 
-  .nav-menu {
-    margin-right: 20px; /* Reduz drasticamente aquela margem antiga de 250px */
-  }
+ 
 
   .nav-menu ul {
     gap: 12px; /* Junta mais os links do menu */
@@ -23,29 +21,57 @@
   /*CARROUSSEL*/
 
 .card-container {
-    flex: 0 0 calc((100% - 60px) / 4); /* Exibe 04 cards */
+    flex: 0 0 calc((100% - 50px) / 4); /* Exibe 04 cards */
    
 }
-
-
 
  
 /* Tablet */
 @media (max-width: 992px) {
-
-
-   /*CARROUSSEL*/ 
-
-
-    /*Exibe 03 cards. */
-   .card-container {
-        flex: 0 0 calc((100% - 30px) / 3);
-         
-    }
-
+   
+  
+  body {
+  
+  padding: 0 120px;
    
 }
+   /*CARROUSSEL*/ 
+   
+   .card-container {
+        flex: 0 0 calc((100% - 50px) / 4);
+         
+    }
+       
+   .botao-menu{
+  display: block;
+  position: relative;
 
+  
+ }
+ .nav-menu .nav-menu-list {
+  display: none;
+  position: absolute; 
+  background-color: rgb(18, 24, 34, 0.75);
+  top: 100%; 
+  left: 70%; 
+  right: 0; 
+  flex-direction: column;
+  align-items: end;   
+  max-width:180px; 
+  z-index:3;
+ }
+
+
+  .nav-menu .menu-active {
+    display: flex;
+  }
+
+
+
+
+
+
+}
 
 
 /*CELUALRES*/
@@ -81,12 +107,22 @@
   }
 
   /*CARROUSSEL*/
-
-    /*Exibe 02 cards. */
+  
     .card-container {
-        flex: 0 0 calc((100% - 15px) / 2);
+        flex: 0 0 calc((100% - 50px) / 4);
       
     }
+
+    body {
+  
+  padding: 0 50px;
+   
+}
+
+ .botao-menu{
+  display: block;
+  
+ }
 
 
 /* footer responsivo */
@@ -122,4 +158,5 @@
     flex-direction: column;
     gap: 12px;
   }
+}
 }
