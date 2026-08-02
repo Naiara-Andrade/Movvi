@@ -12,6 +12,8 @@ const containerCarousel = document.getElementById("container-carousel");
 const carouselWrapper = document.querySelector(".carousel-wrapper");
 const carouselViewport = document.querySelector(".carousel-viewport");
 
+
+
 const btnPrev = document.createElement("button");
 btnPrev.classList.add("carousel-btn", "btn-prev");
 btnPrev.id = "btn-prev";
@@ -50,17 +52,18 @@ async function loadCarouselMovies() {
 }
 
 function createCard(movie) {
+ 
+   
 
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("card-container");
+   
 
-    const cardWrapper = document.createElement("div");
-cardWrapper.classList.add("card-wrapper");
-cardContainer.appendChild(cardWrapper);
+    
 
     const card = document.createElement("div");
     card.classList.add("card");
-    cardWrapper.appendChild(card);
+    cardContainer.appendChild(card);
 
     const poster = document.createElement("img");
     poster.classList.add("card-poster");
@@ -99,7 +102,7 @@ cardContainer.appendChild(cardWrapper);
 
     const cardInfo = document.createElement("div");
     cardInfo.classList.add("card-info");
-    cardWrapper.appendChild(cardInfo);
+    cardContainer.appendChild(cardInfo);
 
     const title = document.createElement("h3");
     title.classList.add("card-title");
