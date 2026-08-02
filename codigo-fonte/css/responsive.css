@@ -1,83 +1,8 @@
-
-
 /* Desktop */
 @media (max-width: 1200px) {
 
-  /*CARROUSSEL*/
-
-
- /*Mantém 5 cards.Como os cards ficam menores, reduzi a altura do viewport.*/
-.carousel-viewport {
-  max-height:310px;
- 
-}
-  
-}
-
- 
-/* Tablet */
-@media (max-width: 992px) {
-
-
-   /*CARROUSSEL*/ 
-
-
-    /*Exibe 03 cards. */
-   .card-container {
-        flex: 0 0 calc((100% - 30px) / 3);
-         
-    }
-
-   /*Como cada card fica mais largo, aumentei a altura do viewport.*/
-    .carousel-viewport {
-     max-height: 320px;
- 
-    }   
-
-   
-}
-
-/* Celular*/
-@media (max-width: 768px) {
-
-/*CARROUSSEL*/
-
-    /*Exibe 02 cards. */
-    .card-container {
-        flex: 0 0 calc((100% - 15px) / 2);
-      
-    }
-/* Como os cards ficam maiores, aumentei novamente a altura do viewport.*/
-      .carousel-viewport {
-  max-height: 350px;
- 
-}
-
-/*FAZER RESPONSIVIDADE DO TÍTTULO DO CARROUSSEL*/
-
-}
-
-
-
-
-/* footer responsivo */
-/* Responsividade: Ajuste para celulares */
-@media (max-width: 600px) {
-    .main-footer {
-        flex-direction: column;    /* Empilha os blocos em telas pequenas */
-        text-align: center;
-        gap: 24px;
-        padding: 30px 20px;
-    }
-    
-    .nav-menu ul {
-        justify-content: center;
-    }
-}
-
-/* header responsivo */
-@media (max-width: 1200px) {
-  .logo-header {
+/*HEADER*/
+    .logo-header {
     margin-right: 20px; /* Reduz o espaço do logo para dar vaga ao resto */
     font-size: calc(var(--xxlg) * 0.85); /* Encolhe o logo de leve */
   }
@@ -94,10 +19,41 @@
   .search-bar {
     min-width: 180px; /* Permite que a barra de busca encolha mais no notebook */
   }
+
+  /*CARROUSSEL*/
+
+.card-container {
+    flex: 0 0 calc((100% - 60px) / 4); /* Exibe 04 cards */
+   
 }
 
 
+
+ 
+/* Tablet */
+@media (max-width: 992px) {
+
+
+   /*CARROUSSEL*/ 
+
+
+    /*Exibe 03 cards. */
+   .card-container {
+        flex: 0 0 calc((100% - 30px) / 3);
+         
+    }
+
+   
+}
+
+
+
+/*CELUALRES*/
+
+
+
 @media (max-width: 768px) {
+  /*HEADER*/
   .navbar {
     flex-wrap: wrap;
     gap: 15px;
@@ -123,9 +79,29 @@
     width: 100%;
     max-width: 100%;
   }
-}
+
+  /*CARROUSSEL*/
+
+    /*Exibe 02 cards. */
+    .card-container {
+        flex: 0 0 calc((100% - 15px) / 2);
+      
+    }
 
 
+/* footer responsivo */
+.main-footer {
+        flex-direction: column;    /* Empilha os blocos em telas pequenas */
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+    }
+    
+    .nav-menu ul {
+        justify-content: center;
+    }
+
+  }
 
 /* Ajuste responsivo para telas menores */
 @media (max-width: 650px) {
@@ -146,4 +122,4 @@
     flex-direction: column;
     gap: 12px;
   }
-} */
+}
