@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+ 
 }
 
 .logo-header {
@@ -26,7 +27,7 @@
     0 0 50px rgba(0, 173, 181, 0.2);
 }
 
-.nav-menu ul {
+.nav-menu .nav-menu-list {
   display: flex;
   align-items: center;
   gap: 1.5vw;
@@ -41,15 +42,16 @@
 .nav-menu {
   flex: 1; /* Faz o menu ocupar o espaço do meio */
   display: flex;
-  justify-content: center;
+  justify-content: right;
+  position: relative;
 }
 
-.nav-menu ul li {
+.nav-menu .nav-menu-list li {
   display: flex;
   align-items: center;
 }
 
-.nav-menu ul li a {
+.nav-menu .nav-menu-list li a {
   text-decoration: none;
   color: var(--primary);
   display: block;
@@ -57,12 +59,11 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-
-  height: 100%;
+ height: 100%;
 }
 
-.nav-menu ul li a:hover,
-.btn-header:hover {
+.nav-menu .nav-menu-list li a:hover
+ { 
   text-shadow: 3px 3px 30px rgb(2, 253, 253);
 }
 
@@ -106,3 +107,17 @@ gap: 15px;
 }
 
 
+.botao-menu{
+  display: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--primary);
+  font-size: 1.5rem;
+  transition: 0.3s ease-in-out;
+   
+ }
+
+  
+  
+ 
