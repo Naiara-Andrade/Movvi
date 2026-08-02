@@ -43,7 +43,7 @@ padding: 0 clamp(25px, 2vw, 32px);
 .hero__content {
   position: relative;
   z-index: 2;
-  max-width: 500px; /* Limita a largura para o texto não ficar gigante em telas grandes*/
+  max-width: 600px; /* Limita a largura para o texto não ficar gigante em telas grandes*/
   animation: fadeInUp 1s ease-out forwards;
   padding-left: clamp(20px, 6vw, 80px);
 }
