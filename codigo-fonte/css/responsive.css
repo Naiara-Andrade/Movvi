@@ -38,7 +38,7 @@
    /*CARROUSSEL*/ 
    
    .card-container {
-        flex: 0 0 calc((100% - 50px) / 4);
+        flex: 0 0 calc((100% - 32px) / 3);
          
     }
        
