@@ -1,0 +1,144 @@
+/* Desktop */
+@media (max-width: 1200px) {
+
+
+/*CARROUSSEL*/
+.card-container {
+    flex: 0 0 calc((100% - 50px) / 4); /* Exibe 04 cards */
+   
+}
+
+ 
+/* Tablet */
+@media (max-width: 992px) {
+   
+     /*CARROUSSEL*/ 
+   
+   .card-container {
+        flex: 0 0 calc((100% - 50px) / 4);
+         
+    }
+       
+   .botao-menu{
+  display: block;
+  position: relative;
+
+  
+ }
+ .nav-menu .nav-menu-list {
+  display: none;
+  position: absolute; 
+  background-color: rgb(18, 24, 34, 0.75);
+  top: 100%; 
+  left: 80%; 
+  right: 0; 
+  flex-direction: column;
+  align-items: center;   
+  max-width:150px; 
+  z-index:3;
+ }
+
+
+  .nav-menu .menu-active {
+    display: flex;
+  }
+
+}
+
+
+/*CELULAR*/
+
+
+@media (max-width: 768px) {
+  /*HEADER*/
+ 
+.nav-menu .nav-menu-list {
+    left: 70%; 
+      }
+
+  /*CARROUSSEL*/
+  
+    .card-container {
+        flex: 0 0 calc((100% - 50px) / 3);
+      
+    }
+
+    body {
+  
+ width: 90%;
+ 
+   
+}
+
+.hero {
+ 
+  height: 50vh; 
+
+}
+.hero__content {
+  max-width: 400px; 
+  
+  padding-left: clamp(10px, 2vw,15px);
+
+}
+
+.hero__description {
+  
+   margin-bottom: 20px;
+  
+}
+
+.hero__title {
+    font-size: clamp( 2rem, 4vw, 3.5rem);
+} 
+
+ 
+.btn-hero-primary,
+.btn-hero-secondary {
+
+  padding: 12px 12px;
+  
+  
+  
+}
+
+.hero-btn {
+  flex-direction:initial;
+  width: 50%;
+
+}
+/* footer responsivo */
+.main-footer {
+        flex-direction: column;    /* Empilha os blocos em telas pequenas */
+        text-align: center;
+        gap: 24px;
+        padding: 30px 20px;
+    }
+    
+    .nav-menu ul {
+        justify-content: center;
+    }
+
+  }
+
+/* Ajuste responsivo para telas menores */
+@media (max-width: 650px) {
+  .hero {
+    height: 60vh;
+    text-align: center;
+    padding-top: 40px;
+  }
+  .hero__overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 21, 21, 0.95) 60%,
+      rgba(11, 21, 21, 0.7) 100%
+    );
+  }
+  .hero__actions {
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+}

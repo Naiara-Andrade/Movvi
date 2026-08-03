@@ -29,8 +29,10 @@ async function loadHeroMovies() {
 const heroImage = document.getElementById("hero-image");
 const heroTitle = document.getElementById("hero-title");
 const heroDescription = document.getElementById("hero-description");
-
 const heroIndicators = document.getElementById("hero-indicators");
+
+const heroBtnPrimary = document.getElementById("btn-primary");
+const heroBtnSecondary = document.getElementById("btn-secondary");
 
 let currentHero = 0;
 
@@ -84,7 +86,7 @@ function updateHero() {
     description = "Sinopse indisponível no momento.";
   }
 
-  let max_description_lenght = 300;
+  let max_description_lenght = 250;
 
   if (description.length > max_description_lenght) {
     description = description.slice(0, max_description_lenght) + "...";
@@ -104,3 +106,10 @@ function updateHero() {
 }
 
 loadHeroMovies();
+
+function atualizarTextoBotoes() {
+  heroBtnPrimary.textContent = "Adicionar";
+  heroBtnSecondary.textContent = "Detalhes";
+}
+
+atualizarTextoBotoes();
