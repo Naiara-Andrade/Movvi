@@ -43,65 +43,70 @@
     display: flex;
   }
 
-
-
-
-
-
 }
 
 
-/*CELUALRES*/
-
+/*CELULAR*/
 
 
 @media (max-width: 768px) {
   /*HEADER*/
-  .navbar {
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center; /* Centraliza os elementos no mobile */
-  }
-
-  .nav-menu {
-    margin-right: 0; /* Zera as margens no mobile */
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .search-wrapper {
-    margin-left: 0;
-    width: 100%;
-    order: 3;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .search-bar {
-    width: 100%;
-    max-width: 100%;
-  }
+ 
+.nav-menu .nav-menu-list {
+    left: 70%; 
+      }
 
   /*CARROUSSEL*/
   
     .card-container {
-        flex: 0 0 calc((100% - 50px) / 4);
+        flex: 0 0 calc((100% - 50px) / 3);
       
     }
 
     body {
   
-  padding: 0 50px;
+ width: 90%;
+ 
    
 }
 
- .botao-menu{
-  display: block;
+.hero {
+ 
+  height: 50vh; 
+
+}
+.hero__content {
+  max-width: 400px; 
   
- }
+  padding-left: clamp(10px, 2vw,15px);
 
+}
 
+.hero__description {
+  
+   margin-bottom: 20px;
+  
+}
+
+.hero__title {
+    font-size: clamp( 2rem, 4vw, 3.5rem);
+} 
+
+ 
+.btn-hero-primary,
+.btn-hero-secondary {
+
+  padding: 12px 12px;
+  
+  
+  
+}
+
+.hero-btn {
+  flex-direction:initial;
+  width: 50%;
+
+}
 /* footer responsivo */
 .main-footer {
         flex-direction: column;    /* Empilha os blocos em telas pequenas */

@@ -2,11 +2,11 @@
   position: relative;
   height: 80vh; /* Ocupa 80% da altura da tela, ideal para banners */
   display: flex;
-  align-items: center; /* Alinha o conteúdo verticalmente no centro */
+  align-items: center;
   /* Conexão 1: Alinhamento lateral idêntico ao do Header */
   /* padding: 0 clamp(15px, 2vw, 32px); */
-  overflow: hidden; /*ocultar qualquer conteúdo que ultrapasse o tamanho limite (largura ou altura) de um elemento */
-padding: 0 clamp(25px, 2vw, 32px);
+  overflow: hidden; 
+  padding: 0 clamp(25px, 2vw, 32px);
 
   
   
@@ -15,7 +15,7 @@ padding: 0 clamp(25px, 2vw, 32px);
 .hero-image {
   position: absolute;
    inset: 0;
-  height: 100%; /* Ocupa 80% da altura da tela, ideal para banners */
+  height: 100%; 
   width: 100%;
   object-fit: cover;
   object-position: center;
@@ -31,7 +31,6 @@ padding: 0 clamp(25px, 2vw, 32px);
   left: 0;
   width: 100%;
   height: 100%;
-  /* Mistura o preto com o tom escuro do seu projeto para suavizar a colagem com o Header */
   background: linear-gradient(
     to right,
     rgba(22, 21, 21, 0.95) 30%,
@@ -82,7 +81,7 @@ padding: 0 clamp(25px, 2vw, 32px);
 /* --- BOTÕES DO HERO ADAPTADOS À SUA IDENTIDADE --- */
 
 .btn-hero-primary,
-.btn-hero-secundary {
+.btn-hero-secondary {
   color: var(--primary);
   padding: 12px 20px;
   
@@ -138,9 +137,10 @@ padding: 0 clamp(25px, 2vw, 32px);
 
 .hero-indicators{
     position:absolute;
-
     left:50%;
     bottom:30px;
+
+   
 
     transform:translateX(-50%);
 
