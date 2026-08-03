@@ -22,9 +22,32 @@
    .botao-menu{
   display: block;
   position: relative;
+   }
 
+
+   /* HERO  */
+  .hero {
+   height: 50vh; 
+  min-height: 650px;
+  max-height: 750px;
+ 
+}
   
- }
+.hero__title {
+    font-size: clamp( 2rem, 4vw, 3.5rem);
+} 
+.hero__content {
+  max-width: 400px; 
+  
+  padding-left: clamp(10px, 2vw,15px);
+
+}
+
+.hero-btn {
+  width: 50%;
+
+}
+ 
  .nav-menu .nav-menu-list {
   display: none;
   position: absolute; 
@@ -72,12 +95,12 @@
 
 .hero {
  
-  height: 50vh; 
+  min-height: 550px;
+  max-height: 600px;
 
 }
 .hero__content {
   max-width: 400px; 
-  
   padding-left: clamp(10px, 2vw,15px);
 
 }
@@ -88,9 +111,7 @@
   
 }
 
-.hero__title {
-    font-size: clamp( 2rem, 4vw, 3.5rem);
-} 
+
 
  
 .btn-hero-primary,
@@ -103,24 +124,11 @@
 }
 
 .hero-btn {
-  flex-direction:initial;
   width: 50%;
 
 }
-/* footer responsivo */
-.main-footer {
-        flex-direction: column;    /* Empilha os blocos em telas pequenas */
-        text-align: center;
-        gap: 24px;
-        padding: 30px 20px;
-    }
+
     
-    .nav-menu ul {
-        justify-content: center;
-    }
-
-  }
-
 /* Ajuste responsivo para telas menores */
 @media (max-width: 650px) {
   .hero {

@@ -108,8 +108,18 @@ function updateHero() {
 loadHeroMovies();
 
 function atualizarTextoBotoes() {
-  heroBtnPrimary.textContent = "Adicionar";
-  heroBtnSecondary.textContent = "Detalhes";
+  if (window.innerWidth <= 992) {
+
+        heroBtnPrimary.textContent = "Adicionar";
+        heroBtnSecondary.textContent = "Detalhes";
+
+    } else {
+
+        heroBtnPrimary.textContent = "Adicionar à lista";
+        heroBtnSecondary.textContent = "Ver detalhes";
+
+    }
 }
+
 
 atualizarTextoBotoes();
