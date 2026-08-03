@@ -8,24 +8,33 @@
    
 }
 
+}
  
 /* Tablet */
 @media (max-width: 992px) {
-   
-     /*CARROUSSEL*/ 
-   
-   .card-container {
-        flex: 0 0 calc((100% - 50px) / 4);
-         
-    }
-       
-   .botao-menu{
-  display: block;
-  position: relative;
-   }
+
+  /*HEADER*/
+ 
+ .nav-menu .nav-menu-list {
+  display: none;
+  position: absolute; 
+  background-color: rgb(18, 24, 34, 0.75);
+  top: 100%; 
+  left: 80%; 
+  right: 0; 
+  flex-direction: column;
+  align-items: center;   
+  max-width:150px; 
+  z-index:3;
+ }
 
 
-   /* HERO  */
+  .nav-menu .menu-active {
+    display: flex;
+  }
+ 
+  
+  /* HERO  */
   .hero {
    height: 50vh; 
   min-height: 650px;
@@ -47,30 +56,23 @@
   width: 50%;
 
 }
- 
- .nav-menu .nav-menu-list {
-  display: none;
-  position: absolute; 
-  background-color: rgb(18, 24, 34, 0.75);
-  top: 100%; 
-  left: 80%; 
-  right: 0; 
-  flex-direction: column;
-  align-items: center;   
-  max-width:150px; 
-  z-index:3;
- }
-
-
-  .nav-menu .menu-active {
-    display: flex;
-  }
+   
+/*CARROUSSEL*/ 
+   
+   .card-container {
+        flex: 0 0 calc((100% - 50px) / 4);
+         
+    }
+       
+   .botao-menu{
+  display: block;
+  position: relative;
+   }
 
 }
 
 
 /*CELULAR*/
-
 
 @media (max-width: 768px) {
   /*HEADER*/
