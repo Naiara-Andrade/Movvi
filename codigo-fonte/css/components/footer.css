@@ -1,7 +1,7 @@
 /* Container principal do rodapé */
 .main-footer {
     display: flex;
-    justify-content: space-between; /* Empurra a info para a esquerda e o menu para a direita */
+    justify-content:left; /* Empurra a info para a esquerda e o menu para a direita */
     align-items: center;           /* Alinha tudo verticalmente no centro */
     padding: 30px 50px;            /* Espaçamento interno */
     background-color: #1a1a1a;     /* Fundo escuro moderno */
