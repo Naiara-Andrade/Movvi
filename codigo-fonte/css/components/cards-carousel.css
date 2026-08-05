@@ -44,14 +44,19 @@
   color: transparent; /* */
 
   /* Opcional: Garante que o elemento seja inline-block para o gradiente renderizar certinho */
-  display: inline-block;
+    display: flex;
+    align-items: end;
+
+
 }
 
 .title-wrapper i.fa-trophy {
-  /* Altere a cor se quiser para ouro puro */
+
   color: #ffd700;
 
-  /* O pulo do gato: animação constante */
+
+
+  
   animation: brilhoTrofeu 2s infinite ease-in-out;
 }
 

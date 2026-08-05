@@ -90,7 +90,7 @@ function updateHero() {
 
 if (window.innerWidth <= 360) {
     maxDescriptionLength = 120;
-} else if (window.innerWidth <= 412) {
+} else if (window.innerWidth <= 425) {
     maxDescriptionLength = 150;
 } else if (window.innerWidth <= 768) {
     maxDescriptionLength = 300;
