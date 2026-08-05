@@ -159,7 +159,20 @@
     
 
 @media (max-width: 412px) {
-  
+
+  body {
+    width: 100%;
+  }
+
+.logo-header {
+  font-size: var(--xlg);
+}
+
+  .nav-menu .nav-menu-list {
+  left:  70%;
+   font-size: var(--xsml);
+  }
+
 .hero {
   /*HEADER*/ 
   min-height: 400px;
@@ -195,8 +208,8 @@
 .btn-hero-primary,
 .btn-hero-secondary {
 
- width: 40px;
- height: 40px;
+ width: 35px;
+ height: 35px;
 
   
 }
