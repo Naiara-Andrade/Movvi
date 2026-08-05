@@ -86,13 +86,25 @@ function updateHero() {
     description = "Sinopse indisponível no momento.";
   }
 
-  let max_description_lenght = 250;
+  let maxDescriptionLength;
 
-  if (description.length > max_description_lenght) {
-    description = description.slice(0, max_description_lenght) + "...";
-  }
+if (window.innerWidth <= 360) {
+    maxDescriptionLength = 120;
+} else if (window.innerWidth <= 412) {
+    maxDescriptionLength = 150;
+} else if (window.innerWidth <= 768) {
+    maxDescriptionLength = 300;
+} else if (window.innerWidth <= 992) {
+    maxDescriptionLength = 350;
+} else{
+  maxDescriptionLength = 450;
+}
 
-  heroDescription.textContent = description;
+if (description.length > maxDescriptionLength) {
+    description = description.slice(0, maxDescriptionLength) + "...";
+}
+
+heroDescription.textContent = description;
 
   const indicators = document.querySelectorAll(".hero-indicator");
 
@@ -108,8 +120,20 @@ function updateHero() {
 loadHeroMovies();
 
 function atualizarTextoBotoes() {
-  heroBtnPrimary.textContent = "Adicionar";
-  heroBtnSecondary.textContent = "Detalhes";
+ if (window.innerWidth <= 992) {
+
+    heroBtnPrimary.innerHTML =
+        '<i class="fa-solid fa-square-plus"></i> ';
+
+    heroBtnSecondary.innerHTML =
+        '<i class="fa-solid fa-circle-info"></i>';
+
+} else {
+
+    heroBtnPrimary.textContent = "Adicionar à lista";
+    heroBtnSecondary.textContent = "Ver detalhes";
+
+}
 }
 
 atualizarTextoBotoes();
