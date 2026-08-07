@@ -1,0 +1,1 @@
+const categoriesContainer = document.getElementById("categories-container");

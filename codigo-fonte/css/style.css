@@ -1,7 +1,7 @@
 @import url('../css/global.css');
 @import url('../css/components/header.css');
-@import url('../css/components/footer.css');
 @import url('../css/components/hero.css');
 @import url('../css/components/cards-carousel.css');
+@import url('../css/components/categories.css');
 @import url('../css/components/footer.css');
-@import url('responsive.css');
+@import url('../css/responsive.css');
