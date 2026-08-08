@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,6 +19,7 @@
           class="categories-filter"
           aria-label="Filtrar filmes por categoria"
         >
+
           <button class="category-chip">Ação</button>
           <button class="category-chip">Comédia</button>
           <button class="category-chip">Romance</button>
@@ -26,7 +27,19 @@
           <button class="category-chip">Terror</button>
           <button class="category-chip">Suspense</button>
           <button class="category-chip">Ficção</button>
+          <button class="category-chip">Aventura</button>
+
         </nav>
+
+        <select id="sort-movies">
+    <option value="vote.desc">Melhor avaliação</option>
+    <option value="vote.asc">Pior avaliação</option>
+    <option value="popularity.desc">Mais populares</option>
+    <option value="release_date.desc">Mais recentes</option>
+    <option value="release_date.asc">Mais antigos</option>
+</select>
+
+
 
         <div class="categories-container" id="categories-container">
                       
@@ -37,10 +50,12 @@
     </main>
     <div id="footer"></div>
 
+    <script src="./js/api.js/api.js"></script>
     <script src="./js/load-components.js"></script>
     <script src="./js/header.js"></script>
-    <script src="./js/footer.js"></script>
-    <script src="./js/categories.js"></script>
     <script src="./js/components/cards.js"></script>
+    <script src="./js/categories.js"></script>
+        
+    
   </body>
 </html>
