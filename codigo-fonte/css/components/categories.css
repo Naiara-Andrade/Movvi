@@ -1,0 +1,64 @@
+
+.categories-title{
+    color: var(--primary);
+    padding: clamp(15px,30px,35px);
+
+}
+
+.categories-container{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:24px; 
+    padding: 6px 14px; 
+
+   
+}
+
+.categories-container .caixa{
+     background-color: violet;
+       height:400px;
+}
+
+.categories-filter{
+ display: flex;
+ gap: 10px;  
+ margin:20px; 
+ width:100%;
+}
+
+.categories-filter .category-chip{
+background-color: var(--dark-secondary);
+border: none;
+padding: 15px;
+border-radius: 30px;
+width: auto;
+text-align: center;
+color: var(--quaternary);
+font-weight: bold;
+letter-spacing: 1.7px;
+font-family:var(--font-secondary);
+transition: transform 0.3s ease;
+}
+
+.categories-filter .category-chip--active{
+background-color: var(--tertiary);
+border: none;
+padding: 15px;
+border-radius: 30px;
+width: auto;
+text-align: center;
+color: var(--dark-secondary);
+font-weight: 1000;
+letter-spacing: 1.7px;
+font-family:var(--font-secondary);
+}
+
+.categories-filter .category-chip:hover{
+  transform: scale(1.04);
+  
+}
+
+
+
+
+
