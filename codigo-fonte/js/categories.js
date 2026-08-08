@@ -14,3 +14,25 @@ async function initPage() {
 }
 
 initPage();
+
+function initCategory() {
+
+const categoriesChip = document.querySelectorAll(".category-chip");
+
+categoriesChip.forEach((chip) => {
+
+    chip.addEventListener("click", () => {
+
+        categoriesChip.forEach((item) => {
+            item.classList.remove("category-chip--active");
+        });
+
+        chip.classList.add("category-chip--active");
+
+    });
+
+});
+
+}
+
+initCategory()
