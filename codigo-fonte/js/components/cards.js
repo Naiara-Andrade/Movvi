@@ -1,4 +1,4 @@
-function createMovieCard(movie, movieGenres) {
+function createMovieCard(movie, movieGenres, selectedGenreId) {
 
     const cardContainer = document.createElement("article");
     cardContainer.classList.add("card-container");
@@ -71,20 +71,31 @@ function createMovieCard(movie, movieGenres) {
 
     const cardCategory = document.createElement("span");
     cardCategory.classList.add("card-category");
+if (selectedGenreId) {
 
-    if (movie.genre_ids && movie.genre_ids.length > 0) {
+    const selectedGenre = movieGenres.find(
+        (genre) => genre.id === selectedGenreId
+    );
 
-        const genreId = movie.genre_ids[0];
+    cardCategory.textContent =
+        selectedGenre ? selectedGenre.name : "N/A";
 
-        const genre = movieGenres.find(
-            (movieGenre) => movieGenre.id === genreId
-        );
+} else if (movie.genre_ids && movie.genre_ids.length > 0) {
 
-        cardCategory.textContent = genre ? genre.name : "N/A";
+    const genreId = movie.genre_ids[0];
 
-    } else {
-        cardCategory.textContent = "N/A";
-    }
+    const genre = movieGenres.find(
+        (movieGenre) => movieGenre.id === genreId
+    );
+
+    cardCategory.textContent =
+        genre ? genre.name : "N/A";
+
+} else {
+
+    cardCategory.textContent = "N/A";
+
+}
 
     cardMeta.appendChild(cardYear);
     cardMeta.appendChild(cardSeparator);

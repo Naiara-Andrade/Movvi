@@ -13,11 +13,9 @@
 
    
 }
-
-.categories-container .caixa{
-     background-color: violet;
-       height:400px;
-}
+/* .categories-container .card-container {
+    min-width: 0;
+} */
 
 .categories-filter{
  display: flex;

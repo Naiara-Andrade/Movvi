@@ -19,7 +19,6 @@
           class="categories-filter"
           aria-label="Filtrar filmes por categoria"
         >
-
           <button class="category-chip">Ação</button>
           <button class="category-chip">Comédia</button>
           <button class="category-chip">Romance</button>
@@ -28,34 +27,30 @@
           <button class="category-chip">Suspense</button>
           <button class="category-chip">Ficção</button>
           <button class="category-chip">Aventura</button>
-
         </nav>
+        <div class="categories-sort">
+          <label for="sort-movies">Ordenar por:</label>
 
-        <select id="sort-movies">
-    <option value="vote.desc">Melhor avaliação</option>
-    <option value="vote.asc">Pior avaliação</option>
-    <option value="popularity.desc">Mais populares</option>
-    <option value="release_date.desc">Mais recentes</option>
-    <option value="release_date.asc">Mais antigos</option>
-</select>
+    <select id="sort-movies">
+        
+        <option value="">Selecione</option>
+        <option value="vote_average.desc">Melhor avaliação</option>
+        <option value="popularity.desc">Mais populares</option>
+        <option value="release_date.desc">Mais recentes</option>
+        <option value="release_date.asc">Mais antigos</option>
+    </select>   
 
-
-
-        <div class="categories-container" id="categories-container">
-                      
-           
         </div>
+
+        <div class="categories-container" id="categories-container"></div>
       </section>
-      
     </main>
     <div id="footer"></div>
 
-    <script src="./js/api.js/api.js"></script>
+    <script src="./js/api/api.js"></script>
     <script src="./js/load-components.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/components/cards.js"></script>
     <script src="./js/categories.js"></script>
-        
-    
   </body>
 </html>
