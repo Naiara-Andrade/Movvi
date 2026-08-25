@@ -186,6 +186,34 @@ async function loadPopularRatedMovies(
 
 }
 
+async function loadHiddenGemsMovies(genreId= null) {
+
+const today = new Date().toISOString().split("T")[0];
+
+let url =
+    `https://api.themoviedb.org/3/discover/movie?language=pt-BR&primary_release_date.lte=${today}&api_key=${API_KEY}`;
+
+    if (genreId) {
+    url += `&with_genres=${genreId}`;
+}
+
+     url += `&vote_average.gte=7.0`;
+    url += `&vote_count.gte=600`;
+    url += `&vote_count.lte=899`;
+    url += `&sort_by=vote_average.desc`;
+
+    const response = await fetch(url);
+
+const data = await response.json();
+
+movies = data.results.slice(0, 18);
+
+createCategories(
+    movies,
+    genreId
+);
+
+}
 
 function initDiscover() {
 
@@ -263,6 +291,10 @@ function initDiscover() {
                     );
 
                 }
+
+                if (discoverType === "hidden-gems") {
+    await loadHiddenGemsMovies(genreId);
+}
 
             }
         );
