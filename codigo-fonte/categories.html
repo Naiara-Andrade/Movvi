@@ -4,17 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Categorias | Movvi</title>
+
     <link rel="stylesheet" href="./css/style.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
   </head>
+
   <body>
     <div id="header"></div>
+
     <main style="min-height: 100vh">
       <section class="categories">
+
         <h1 class="categories-title">Categorias</h1>
+
         <nav
           class="categories-filter"
           aria-label="Filtrar filmes por categoria"
@@ -28,23 +34,51 @@
           <button class="category-chip">Ficção</button>
           <button class="category-chip">Aventura</button>
         </nav>
-        <div class="categories-sort">
-          <label for="sort-movies">Ordenar por:</label>
 
-    <select id="sort-movies">
-        
-        <option value="">Selecione</option>
-        <option value="vote_average.desc">Melhor avaliação</option>
-        <option value="popularity.desc">Mais populares</option>
-        <option value="release_date.desc">Mais recentes</option>
-        <option value="release_date.asc">Mais antigos</option>
-    </select>   
+        <div class="discover">
+
+          <h2 class="discover-title">Descubra</h2>
+
+          <div class="discover-options">
+
+            <button class="discover-button" data-discover="trending">
+              <i class="fa-solid fa-fire" aria-hidden="true"></i>
+              <span>Em alta</span>
+            </button>
+
+            <button class="discover-button" data-discover="top-rated">
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <span>Bem avaliados</span>
+            </button>
+
+            <button class="discover-button" data-discover="popular-rated">
+              <i class="fa-solid fa-fire" aria-hidden="true"></i>
+              <i class="fa-solid fa-star" aria-hidden="true"></i>
+              <span>Populares e bem avaliados</span>
+            </button>
+
+            <button class="discover-button" data-discover="hidden-gems">
+              <i class="fa-solid fa-gem" aria-hidden="true"></i>
+              <span>Joias escondidas</span>
+            </button>
+
+          </div>
 
         </div>
 
-        <div class="categories-container" id="categories-container"></div>
+        <div
+          class="categories-container"
+          id="categories-container"
+        ></div>
+
+        <div
+          class="pagination"
+          id="pagination"
+        ></div>
+
       </section>
     </main>
+
     <div id="footer"></div>
 
     <script src="./js/api/api.js"></script>
