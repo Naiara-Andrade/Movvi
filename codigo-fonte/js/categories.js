@@ -348,7 +348,7 @@ function createPagination() {
     }
 
 
-    // Botão anterior
+   
     const prevButton =
         document.createElement("button");
 

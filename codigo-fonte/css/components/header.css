@@ -50,7 +50,7 @@
   align-items: center;
 }
 
-.nav-menu .nav-menu-list li a {
+.nav-menu .nav-menu-list li .menu-item {
   text-decoration: none;
   color: var(--primary);
   display: block;
@@ -61,7 +61,13 @@
  height: 100%;
 }
 
-.nav-menu .nav-menu-list li a:hover
+.nav-menu .nav-menu-list li .menu-item--active {
+  
+  color: var(--tertiary);
+ 
+}
+
+.nav-menu .nav-menu-list li .menu-item:hover
  { 
   text-shadow: 3px 3px 30px rgb(2, 253, 253);
 }
