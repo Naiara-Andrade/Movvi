@@ -226,6 +226,20 @@ function initDiscover() {
                 const discoverType =
                     button.dataset.discover;
 
+                discoverButtons.forEach(
+                    (btn) => {
+
+                        btn.classList.remove(
+                            "discover-button--active"
+                        );
+
+                    }
+                );
+
+                button.classList.add(
+                    "discover-button--active"
+                );
+
                 const activeChip =
                     document.querySelector(
                         ".category-chip--active"
