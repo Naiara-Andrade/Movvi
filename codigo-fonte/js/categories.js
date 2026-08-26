@@ -76,7 +76,7 @@ async function loadMovies(filters = {}) {
         await response.json();
 
     totalPages =
-        data.total_pages;
+       totalPages = Math.min(data.total_pages, 10);
 
     movies =
         data.results.slice(0, 18);
@@ -323,6 +323,7 @@ function createPagination() {
     pagination.innerHTML = "";
 
     const maxVisiblePages = 5;
+    const maxPages = Math.min(totalPages, 10);
 
     let startPage = Math.max(
         1,
@@ -330,11 +331,14 @@ function createPagination() {
     );
 
     let endPage = Math.min(
-        totalPages,
+        maxPages,
         startPage + maxVisiblePages - 1
     );
 
-    if (endPage - startPage < maxVisiblePages - 1) {
+    if (
+        endPage - startPage <
+        maxVisiblePages - 1
+    ) {
 
         startPage = Math.max(
             1,
@@ -343,6 +347,52 @@ function createPagination() {
 
     }
 
+
+    // Botão anterior
+    const prevButton =
+        document.createElement("button");
+
+    
+    prevButton.classList.add(
+             "page-button",
+    "pagination-control"
+    );
+
+    const prevIcon =
+    document.createElement("i");
+
+prevIcon.classList.add(
+    "fa-solid",
+    "fa-chevron-left"
+);
+
+prevButton.appendChild(prevIcon);
+
+    prevButton.disabled =
+        currentPage === 1;
+
+    pagination.appendChild(
+        prevButton
+    );
+
+    prevButton.addEventListener(
+        "click",
+        async () => {
+
+            if (currentPage > 1) {
+
+                currentPage--;
+
+                await loadMovies(
+                    currentFilters
+                );
+
+            }
+
+        }
+    );
+
+    
     for (
         let page = startPage;
         page <= endPage;
@@ -384,6 +434,50 @@ function createPagination() {
         );
 
     }
+
+
+    // Botão próximo
+    const nextButton =
+        document.createElement("button");
+
+        nextButton.classList.add(
+         "page-button",
+    "pagination-control"
+    );
+
+    const nextIcon =
+    document.createElement("i");
+
+nextIcon.classList.add(
+    "fa-solid",
+    "fa-chevron-right"
+);
+
+nextButton.appendChild(nextIcon);
+
+    nextButton.disabled =
+        currentPage === maxPages;
+
+    pagination.appendChild(
+        nextButton
+    );
+
+    nextButton.addEventListener(
+        "click",
+        async () => {
+
+            if (currentPage < maxPages) {
+
+                currentPage++;
+
+                await loadMovies(
+                    currentFilters
+                );
+
+            }
+
+        }
+    );
 
 }
 

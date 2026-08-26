@@ -223,3 +223,14 @@ font-family:var(--font-secondary);
   transform: none;
   color: var(--dark-primary);
 }
+
+.pagination-control{
+  width: 30px;
+  height: 30px;
+  
+}
+
+.pagination-control i{
+  font-size:var(--xsml)
+  
+}
