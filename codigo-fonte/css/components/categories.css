@@ -12,14 +12,13 @@
 
 .categories-title{
     color: var(--primary);
-    /* padding: clamp(15px,40px,35px); */
 
 }
 
 .categories-container{
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap:24px; 
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap:30px 24px;
     
 
    
@@ -30,13 +29,14 @@
  display: flex;
 justify-content: center;
  gap: 10px;  
- margin: 30px; 
+ margin: 30px 0 30px 0;
 
 }
 
 .categories-filter .category-chip{
 display: flex; 
 align-items: center;
+justify-content: center;
 background-color: var(--dark-secondary);
 border: 1px solid rgba(255, 255, 255, 0.06);
 padding: 15px;
@@ -102,7 +102,7 @@ font-family:var(--font-secondary);
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
-  margin: 30px; 
+  margin: 30px 0 30px 0; 
   
 }
 
@@ -112,7 +112,8 @@ font-family:var(--font-secondary);
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-width: 140px;
+ 
+  max-width: 220px;
   font-size: var(--sml);
   height: 40px;
   padding: 18px 22px;

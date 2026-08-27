@@ -2,6 +2,25 @@
   .card-container {
     flex: 0 0 calc((100% - 50px) / 4); /* Exibe 04 cards */
   }
+
+  .categories-filter {
+    display: grid; 
+    grid-template-columns: repeat(4,max-content);
+    column-gap: 30px;
+    gap: 20px;
+    
+  }
+  .categories-filter .category-chip{
+    width: 100%;
+  }
+
+  .discover-options{
+    display: grid; 
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 30px;
+    gap: 20px;
+  }
+
 }
 
 @media (max-width: 992px) {
