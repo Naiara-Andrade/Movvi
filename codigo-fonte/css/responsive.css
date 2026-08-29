@@ -1,25 +1,18 @@
 @media (max-width: 1200px) {
   .card-container {
-    flex: 0 0 calc((100% - 50px) / 4); /* Exibe 04 cards */
+    flex: 0 0 calc((100% - 50px) / 4); 
   }
 
-  .categories-filter {
-    display: grid; 
-    grid-template-columns: repeat(4,max-content);
-    column-gap: 30px;
-    gap: 20px;
-    
-  }
+  
   .categories-filter .category-chip{
     width: 100%;
   }
 
-  .discover-options{
-    display: grid; 
-    grid-template-columns: repeat(2, max-content);
-    column-gap: 30px;
-    gap: 20px;
-  }
+
+ .categories-container {
+        grid-template-columns: repeat(5, 1fr);
+    }
+ 
 
 }
 
@@ -92,6 +85,26 @@
    
     padding: 20px;
   }
+
+
+ .categories-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+.categories-filter .category-chip, 
+.discover-button .shortcut {
+    font-size: var(--sml);
+  
+  }  
+
+.categories-filter .category-chip{
+padding: 10px;
+}
+ 
+
+.discover-button{
+padding: 10px;
+}
 }
 
 @media (max-width: 768px) {
@@ -120,9 +133,39 @@
   .logo-footer {
     text-align: center;
   }
+
+.categories-filter .category-chip, 
+.discover-button .shortcut {
+    font-size: var(--xsml);
+  
+  }  
+
+  .categories-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+.categories-filter{
+  display: grid; 
+  grid-template-columns: repeat(4, max-content);
+  }
+
+.discover-options{
+    display: grid; 
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 30px;
+    gap: 20px;
+
+  } 
+
+  .discover-button{
+    max-width: 170px;
+   
+  }
+
 }
 
 @media (max-width: 425px) {
+
   body {
     width: 100%;
   }
@@ -199,9 +242,37 @@
   .card-category {
     font-size: var(--xsml);
   }
+
+
+ .categories-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+ 
+
+.discover-options{
+    display: grid; 
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 30px;
+    gap: 20px;
+
+  } 
+
+  .discover-button{
+    max-width: 170px;
+   
+  }
+
+
 }
 
 @media (max-width: 360px) {
+
+   body {
+    width: 100%;
+  }
+
   .title-wrapper .title-carousel {
     font-size: var(--lg);
   }
