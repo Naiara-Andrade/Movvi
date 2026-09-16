@@ -75,11 +75,26 @@ async function loadMovies(filters = {}) {
     const data =
         await response.json();
 
+let results = data.results;
+
+if (getMoviesPerPage() === 24) {
+    const responseNext =
+        await fetch(`${url}&page=${currentPage + 1}`);
+
+    const dataNext =
+        await responseNext.json();
+
+    results = [
+        ...results,
+        ...dataNext.results
+    ];
+}
+
     totalPages =
        totalPages = Math.min(data.total_pages, 10);
 
-    movies =
-        data.results.slice(0, 18);
+           movies =
+    results.slice(0, getMoviesPerPage());
 
     createCategories(
         movies,
@@ -177,7 +192,7 @@ async function loadPopularRatedMovies(
     );
 
     movies =
-        allMovies.slice(0, 18);
+        allMovies.slice(0, getMoviesPerPage());
 
     createCategories(
         movies,
@@ -206,7 +221,7 @@ let url =
 
 const data = await response.json();
 
-movies = data.results.slice(0, 18);
+movies = data.results.slice(0, getMoviesPerPage());
 
 createCategories(
     movies,
@@ -214,6 +229,8 @@ createCategories(
 );
 
 }
+
+
 
 function initDiscover() {
 
@@ -436,7 +453,7 @@ prevButton.appendChild(prevIcon);
     }
 
 
-    // Botão próximo
+   
     const nextButton =
         document.createElement("button");
 
@@ -531,6 +548,17 @@ function initCategoryFilters() {
 
 }
 
+function getMoviesPerPage() {
+   if (window.innerWidth > 1200){
+return 24;
+
+} if (window.innerWidth <= 768) {
+        return 18; 
+}
+return 20;
+
+}
+
 
 async function initCategories() {
 
@@ -584,6 +612,8 @@ async function init() {
     initDiscover();
 
     await initCategories();
+
+    
 
 }
 
