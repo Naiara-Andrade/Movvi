@@ -1,4 +1,8 @@
 @media (max-width: 1200px) {
+ body {
+    width: 90%;
+  }
+
   .card-container {
     flex: 0 0 calc((100% - 50px) / 4); 
   }
@@ -11,15 +15,24 @@
 
  .categories-container {
         grid-template-columns: repeat(5, 1fr);
-    }
- 
+    } 
+
+
+    .discover-button{
+    
+   
+    max-width: 190px;
+    width: 190px;
+   
+
+    
+   
+  }
 
 }
 
 @media (max-width: 992px) {
-  body {
-    width: 90%;
-  }
+ 
 
   .nav-menu .nav-menu-list {
     display: none;
@@ -91,20 +104,30 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-.categories-filter .category-chip, 
+
+
+ .categories-filter .category-chip, 
 .discover-button .shortcut {
-    font-size: var(--sml);
+    font-size: var(--xsml);
   
-  }  
+  }   
 
 .categories-filter .category-chip{
 padding: 10px;
 }
  
+ .discover-options {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+      justify-content: center;
+      justify-items: center;
+    }
 
-.discover-button{
-padding: 10px;
-}
+  .discover-button:nth-child(4) {
+        grid-column: 2;
+    }
+
+  
 }
 
 @media (max-width: 768px) {
@@ -140,6 +163,13 @@ padding: 10px;
   
   }  
 
+.discover-options{
+    display: grid; 
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 30px;
+    gap: 20px;
+
+  } 
   .categories-container {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -149,30 +179,46 @@ padding: 10px;
   grid-template-columns: repeat(4, max-content);
   }
 
-.discover-options{
-    display: grid; 
-    grid-template-columns: repeat(2, max-content);
-    column-gap: 30px;
-    gap: 20px;
 
-  } 
 
-  .discover-button{
+ 
+
+}
+
+@media (max-width: 650px) {
+body{
+  width:100%;
+}
+
+
+  .categories-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+ 
+}
+
+@media (max-width: 550px) {
+
+ 
+   .discover-button{
     max-width: 170px;
    
   }
 
-}
+
+  .categories-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+ 
+  
+  }
+
+
+
 
 @media (max-width: 425px) {
 
-  body {
-    width: 100%;
-  }
-
-  .logo-header {
-    font-size: var(--xlg);
-  }
 
   .nav-menu .nav-menu-list {
     left: 60%;
@@ -242,36 +288,12 @@ padding: 10px;
   .card-category {
     font-size: var(--xsml);
   }
-
-
- .categories-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-
  
-
-.discover-options{
-    display: grid; 
-    grid-template-columns: repeat(2, max-content);
-    column-gap: 30px;
-    gap: 20px;
-
-  } 
-
-  .discover-button{
-    max-width: 170px;
-   
-  }
-
-
 }
 
 @media (max-width: 360px) {
 
-   body {
-    width: 100%;
-  }
+
 
   .title-wrapper .title-carousel {
     font-size: var(--lg);
