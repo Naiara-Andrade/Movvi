@@ -113,7 +113,7 @@ font-family:var(--font-secondary);
   align-items: center;
   justify-content: center;
   gap: 8px;
- 
+ height: 40px;
   max-width: 220px;
   font-size: var(--sml);
   height: 40px;
@@ -144,7 +144,7 @@ font-family:var(--font-secondary);
     font-size:var(--lg);
 }
 
-.discover-button span {
+.discover-button .shortcut {
   font-size: var(--sml);
   font-weight: 700;
   letter-spacing: 1px;
@@ -186,8 +186,8 @@ font-family:var(--font-secondary);
 }
 
 .page-button {
-  width: 40px;
-  height: 40px;
+  width: clamp(30px, 8vw, 40px);
+  height: clamp(30px, 8vw, 40px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,9 +225,8 @@ font-family:var(--font-secondary);
 }
 
 .pagination-control{
-  width: 30px;
-  height: 30px;
-  
+width: clamp(20px,6vw, 30px);
+height: clamp(20px,6vw, 30px);
 }
 
 .pagination-control i{
