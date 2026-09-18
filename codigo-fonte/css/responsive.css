@@ -16,8 +16,7 @@
   }
 
   .discover-button {
-    max-width: 190px;
-    width: 190px;
+    width: 180px;
   }
 }
 
@@ -27,15 +26,27 @@
     position: absolute;
     background-color: rgb(18, 24, 34, 0.75);
     top: 100%;
-    left: 80%;
+    left: auto;
     right: 0;
     flex-direction: column;
     align-items: center;
-    max-width: 150px;
-    z-index: 3;
+    max-width: 100px;
+    min-width:70px;
+    z-index: 3; 
+    padding: 5px 10px;  
+    
+ 
   }
 
-  .nav-menu .menu-active {
+  .nav-menu .nav-menu-list li .menu-item {
+  padding: 3px 5px;}
+
+
+
+
+
+
+  .nav-menu .menu-list--active {
     display: flex;
   }
 
@@ -112,6 +123,11 @@
 }
 
 @media (max-width: 768px) {
+
+body {
+    width: 100%;
+  }
+
   .hero {
     min-height: 550px;
     max-height: 600px;
@@ -138,11 +154,7 @@
     text-align: center;
   }
 
-  .categories-filter .category-chip,
-  .discover-button .shortcut {
-    font-size: var(--xsml);
-  }
-
+  
   .discover-options {
     
     grid-template-columns: repeat(2, max-content);
@@ -157,33 +169,27 @@
     display: grid;
     grid-template-columns: repeat(4, max-content);
   }
+
+
+  
 }
 
-@media (max-width: 650px) {
-  body {
-    width: 100%;
-  }
 
-  .categories-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 
 @media (max-width: 550px) {
   .discover-button {
-    max-width: 170px;
+    width: 170px;
   }
 
   .categories-container {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  
 }
 
 @media (max-width: 425px) {
-  .nav-menu .nav-menu-list {
-    left: 60%;
-    font-size: var(--xsml);
-  }
+  
 
   .hero {
     min-height: 350px;
@@ -194,7 +200,7 @@
     max-width: 250px;
   }
   .hero__title {
-    font-size: clamp(1.5rem, 1vw, 1.5rem);
+    font-size: clamp(1.5rem, 1vw, 2rem);
     margin-bottom: 10px;
   }
 
@@ -248,6 +254,13 @@
   .card-category {
     font-size: var(--xsml);
   }
+
+  .discover-button {
+      width: 130px;
+      height: 50px;
+                       
+    }
+ 
 }
 
 @media (max-width: 375px) {
@@ -278,11 +291,11 @@
     }
 
 
-    .discover-button {
-      max-width: 120px;
-                       
-    }
-
     
-  
+
+
+
+
+
+
 }
