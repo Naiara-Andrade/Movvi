@@ -10,7 +10,7 @@ async function initPage() {
     await loadComponent("header", "./components/header.html");
     await loadComponent("footer", "./components/footer.html");
 
-    initHeader();   // função do header.js
+    initHeader();   
 }
 
-initPage();
+initPage(); 

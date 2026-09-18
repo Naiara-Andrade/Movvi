@@ -569,43 +569,40 @@ async function initCategories() {
 }
 
 
-async function loadComponent(
-    id,
-    file
-) {
+// async function loadComponent(
+//     id,
+//     file
+// ) {
 
-    const response =
-        await fetch(file);
+//     const response =
+//         await fetch(file);
 
-    const html =
-        await response.text();
+//     const html =
+//         await response.text();
 
-    document.getElementById(id)
-        .innerHTML = html;
+//     document.getElementById(id)
+//         .innerHTML = html;
 
-}
+// }
 
 
-async function initPage() {
+// async function initPage() {
 
-    await loadComponent(
-        "header",
-        "./components/header.html"
-    );
+//     await loadComponent(
+//         "header",
+//         "./components/header.html"
+//     );
 
-    await loadComponent(
-        "footer",
-        "./components/footer.html"
-    );
+//     await loadComponent(
+//         "footer",
+//         "./components/footer.html"
+//     );
 
-    initHeader();
 
-}
+//   }
 
 
 async function init() {
-
-    await initPage();
 
     initCategoryFilters();
 
