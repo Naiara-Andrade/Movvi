@@ -12,66 +12,54 @@
   </head>
   <body>
     <div id="header"></div>
-    
+
     <main>
       <section class="hero" id="hero-banner">
+        <img id="hero-image" class="hero-image" alt="Banner do filme" />
 
-    <img
-        id="hero-image"
-        class="hero-image"
-         src="../codigo-fonte/assets/img/posterstranger.webp"
-        alt="Banner do filme"> 
-         
         <div class="hero__overlay"></div>
         <div class="hero__content">
-          <h1 class="hero__title" id="hero-title">Interestelar</h1>
-          <p class="hero__description" id="hero-description">
-            As reservas de recursos da Terra estão escassas. Um grupo de
-            astronautas recebe a missão de verificar possíveis planetas para
-            receberem a população mundial.
-          </p>
+          <h1 class="hero__title" id="hero-title"></h1>
+          <p class="hero__description" id="hero-description"></p>
           <div class="hero-btn">
-            <button id="btn-primary" class="btn-primary btn-hero-primary">
-              Adicionar à lista
-            </button>
-            <button id="btn-secondary" class="btn-primary btn-hero-secondary">Ver detalhes</button>
+            <button
+              id="btn-primary"
+              class="btn-primary btn-hero-primary"
+            ></button>
+            <button
+              id="btn-secondary"
+              class="btn-primary btn-hero-secondary"
+            ></button>
           </div>
         </div>
 
         <div class="hero-indicators" id="hero-indicators"></div>
-         
       </section>
       <section class="carousel">
-
-<div class="top-carousel">
-<div class="title-wrapper">
-        <i class="fa-solid fa-trophy"></i>
-        <span class="title-carousel">Destaques Imperdíveis</span>
-        </div>
+        <div class="top-carousel">
+          <div class="title-wrapper">
+            <i class="fa-solid fa-trophy"></i>
+            <span class="title-carousel">Destaques Imperdíveis</span>
+          </div>
         </div>
 
         <div class="info-carousel">
-          
-         <div class="carousel-wrapper">
-        
-    <div class="carousel-viewport">
-        
-        <div class="container-carousel" id="container-carousel"></div>            
-         
+    <div class="carousel-wrapper">
+      <div class="carousel-viewport">
+        <div class="container-carousel" id="container-carousel"></div>
+      </div>
+    </div>
+  </div>
       </section>
-      
     </main>
-    
+
     <div id="footer"></div>
 
-     <script src="./js/api.js/api.js"></script>
-<script src="./js/load-components.js"></script>
+    <script src="./js/api/api.js"></script>
+    <script src="./js/load-components.js"></script>
     <script src="./js/header.js"></script>
     <script src="./js/hero.js"></script>
     <script src="./js/components/cards.js"></script>
     <script src="./js/carousel.js"></script>
-
-   
   </body>
-
 </html>
