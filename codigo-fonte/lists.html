@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listas</title>
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <main class="main-lists">
+      <section class="profile">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profile-avatar">NA</div>
+          <div class="profile-heading">
+            <p class="profile-name" id="profile-name">Naiara</p>
+            <span class="profile-subtitle">Meu perfil</span>
+          </div>
+        </div>
+      </section>
+      <section class="lists-section">
+        <div>
+          
+          <button type="button" class="btn-secondary" id="btn-search">
+            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+            Buscar filmes
+          </button>
+          
+        </div>
+
+        <h1 class="lists-heading">Minhas listas</h1>
+
+        <div class="lists-container" id="lists-container"></div>
+        <section class="selected-list" id="selected-list" hidden>
+  <h2 class="selected-list-title" id="selected-list-title"></h2>
+
+  <div class="selected-list-movies" id="selected-list-movies"></div>
+</section>
+      </section>
+    </main>
+    <div id="footer"></div>
+
+    <script src="./js/load-components.js"></script>
+    <script src="./js/header.js"></script>
+    <script src="./js/components/cards.js"></script>
+    <script src="./js/lists.js"></script>
+    
+  </body>
+</html>
