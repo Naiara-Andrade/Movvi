@@ -25,15 +25,7 @@
         </div>
       </section>
       <section class="lists-section">
-        <div>
-          
-          <button type="button" class="btn-secondary" id="btn-search">
-            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-            Buscar filmes
-          </button>
-          
-        </div>
-
+        
         <h1 class="lists-heading">Minhas listas</h1>
 
         <div class="lists-container" id="lists-container"></div>
@@ -44,6 +36,38 @@
 </section>
       </section>
     </main>
+    <div id="modal-create-list" hidden>
+  <div>
+    <div class="modal-header">
+      <h2> <i class="fa-solid fa-film" aria-hidden="true"></i>Criar lista</h2>
+
+      <button
+        type="button"
+        id="btn-close-modal"
+        aria-label="Fechar modal"
+      >
+        <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <form id="form-create-list">
+      <label for="list-name">Nome da lista</label>
+
+      <input
+        type="text"
+        id="list-name"
+        name="list-name"
+        
+        placeholder="Digite o nome da lista"
+        required
+      />
+      <span id="list-name-error"></span>
+
+      <button type="submit">Criar</button>
+      <button type="button" id="btn-cancel-list">Cancelar</button>
+    </form>
+  </div>
+</div>
     <div id="footer"></div>
 
     <script src="./js/load-components.js"></script>
