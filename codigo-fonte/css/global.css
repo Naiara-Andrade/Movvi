@@ -60,3 +60,19 @@ body {
   
 }
 
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  background-color: var(--dark-secondary);
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--sml);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
