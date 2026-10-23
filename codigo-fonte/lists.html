@@ -43,7 +43,7 @@
 
       <button
         type="button"
-        id="btn-close-modal"
+        id="btn-close-modal" class="btn-close-modal"
         aria-label="Fechar modal"
       >
         <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
@@ -63,11 +63,104 @@
       />
       <span id="list-name-error"></span>
 
-      <button type="submit">Criar</button>
-      <button type="button" id="btn-cancel-list">Cancelar</button>
+      <button type="submit" class="btn-modal-primary">Criar</button>
+      <button type="button" id="btn-cancel-list" class="btn-cancel-list">Cancelar</button>
     </form>
   </div>
 </div>
+
+
+<div id="modal-edit-list" hidden>
+  <div>
+    <div class="modal-header">
+      <h2>
+        <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+        Editar lista
+      </h2>
+
+      <button
+        type="button"
+        id="btn-close-edit-modal"
+        class="btn-close-modal"
+        aria-label="Fechar modal de edição"
+      >
+        <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <form id="form-edit-list">
+      <div class="edit-list-input">
+      <label for="edit-list-name">Nome da lista</label>
+
+      <input
+        type="text"
+        id="edit-list-name"
+        name="edit-list-name"
+        placeholder="Digite o nome da lista"
+        minlength="3"
+        maxlength="30"
+        required
+      />
+
+      <span id="edit-list-name-error"></span>
+
+      <h3>Filmes da lista (<span id="edit-list-movie-count">0</span>)</h3>
+</div>
+      
+      <div id="edit-list-movies">
+        <!-- Os filmes atuais serão inseridos pelo JavaScript -->
+      </div>
+      
+<div class="edit-list-buttons">
+      <button type="submit" class="btn-modal-primary">
+        Salvar 
+      </button>
+
+      <button
+        type="button"
+        id="btn-cancel-edit-list"
+        class="btn-cancel-list"
+      >
+        Cancelar
+      </button>
+      </div>
+    
+   
+    </form>
+  </div>
+</div>
+ 
+<div id="modal-delete-list" hidden>
+  <div class="delete-list-content">
+    <div class="delete-list-heading">
+      <span class="delete-list-icon">
+        <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
+      </span>
+      <h2>Excluir lista?</h2>
+    </div>
+
+    <p>
+      A lista <strong id="delete-list-name"></strong> e seus
+      <strong id="delete-list-movie-count"></strong>
+      serão removidos.
+      <br />
+      Essa ação não pode ser desfeita.
+    </p>
+
+    <div class="delete-list-buttons">
+      <button type="button" id="btn-cancel-delete-list">
+        Cancelar
+      </button>
+
+      <button type="button" id="btn-confirm-delete-list">
+        Excluir
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
     <div id="footer"></div>
 
     <script src="./js/load-components.js"></script>
