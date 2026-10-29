@@ -170,7 +170,14 @@ body {
     grid-template-columns: repeat(4, max-content);
   }
 
+.main-lists {
+    padding: 20px;
+  }
 
+  .lists-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
   
 }
 
@@ -260,6 +267,19 @@ body {
       height: 50px;
                        
     }
+
+    .main-lists {
+    padding: 15px;
+  }
+
+  .lists-container {
+    grid-template-columns: 1fr;
+  }
+
+  .lists-heading {
+    font-size: 1rem;
+    gap: 8px;
+  }
  
 }
 

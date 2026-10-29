@@ -20,6 +20,37 @@ function createMovieCard(movie, movieGenres, selectedGenreId) {
     poster.alt = movie.title;
     cardContent.appendChild(poster);
 
+    
+const addMovieButton = document.createElement("button");
+addMovieButton.type = "button";
+addMovieButton.dataset.movieId = movie.id;
+addMovieButton.classList.add("card-add-button");
+addMovieButton.setAttribute(
+    "aria-label",
+    `Adicionar ${movie.title} à lista`
+);
+addMovieButton.title = "Adicionar à lista";
+
+const addMovieIcon = document.createElement("i");
+addMovieIcon.classList.add("fa-solid", "fa-plus");
+addMovieIcon.setAttribute("aria-hidden", "true");
+
+addMovieButton.appendChild(addMovieIcon);
+cardContent.appendChild(addMovieButton);
+
+
+addMovieButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    document.dispatchEvent(
+        new CustomEvent("movvi:add-movie-to-selection", {
+            detail: { movie }
+        })
+    );
+});
+
+
+
 
     const ratingBadge = document.createElement("div");
     ratingBadge.classList.add("card-rating-badge");

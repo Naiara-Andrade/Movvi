@@ -27,26 +27,185 @@ const deleteListMovieCount = document.getElementById("delete-list-movie-count");
 const cancelDeleteListButton = document.getElementById("btn-cancel-delete-list");
 const confirmDeleteListButton = document.getElementById("btn-confirm-delete-list");
 
+const modalSearchMovies =document.getElementById("modal-search-movies");
+const closeSearchMoviesButton = document.getElementById("btn-close-search-movies");
+const cancelSearchMoviesButton = document.getElementById("btn-cancel-search-movies");
+const searchMovieInput = document.getElementById("search-movie-input");
+const searchMoviesButton = document.getElementById("btn-search-movies");
+const searchMoviesResults = document.getElementById("search-movies-results");
+const addSelectedMoviesButton = document.getElementById("btn-add-selected-movies");
+
+const addMovieCreateButton = document.getElementById("btn-add-movie-create");
+const addMovieEditButton = document.getElementById("btn-add-movie-edit");
+
 let editingList = null;
+let creatingList = null;
 let listToDelete = null;
 let selectedListId = null;
 let movieToDelete = null;
-
-const lists = [
-  {
-    id: 1,
-    name: "Lista de Ação",
-    movies: [
-      { id: 1, title: "John Wick" },
-      { id: 2, title: "Matrix" }
-    ]
-  },
-  {
-    id: 2,
-    name: "Lista de Comédia",
-    movies: []
-  }
+let selectedMovies = [];
+const mockMovies = [
+  { id: 1, title: "Interestelar", year: 2014 },
+  { id: 2, title: "Matrix", year: 1999 },
+  { id: 3, title: "John Wick", year: 2014 },
+  { id: 4, title: "A Origem", year: 2010 },
+  { id: 5, title: "O Batman", year: 2022 }
 ];
+
+
+function openSearchMoviesModal() {
+   selectedMovies = [];
+  addSelectedMoviesButton.disabled = true;
+  addSelectedMoviesButton.textContent = "Adicionar selecionados (0)";
+  searchMovieInput.value = "";
+  searchMoviesResults.innerHTML = "";
+
+  modalSearchMovies.hidden = false;
+}
+
+function closeSearchMoviesModal() {
+  modalSearchMovies.hidden = true;
+}
+
+
+  addMovieCreateButton.addEventListener("click", () => {
+    const listName = listNameInput.value.trim();
+
+    listNameError.textContent = "";
+
+    if (listName.length < 3 || listName.length > 30) {
+        listNameError.textContent =
+            "O nome da lista deve ter entre 3 e 30 caracteres.";
+        return;
+    }
+
+    localStorage.setItem("movvi-pending-list-name", listName);
+
+    window.location.href = "categories.html";
+});
+
+
+  addMovieEditButton.addEventListener("click", () => {
+    if (!editingList) return;
+
+    localStorage.setItem(
+        "movvi-pending-list-id",
+        String(editingList.id)
+    );
+
+    window.location.href = "categories.html";
+});
+closeSearchMoviesButton.addEventListener("click", closeSearchMoviesModal);
+cancelSearchMoviesButton.addEventListener("click", closeSearchMoviesModal);
+
+function updateSelectedMoviesButton() {
+  addSelectedMoviesButton.disabled = selectedMovies.length === 0;
+
+  addSelectedMoviesButton.textContent = `Adicionar selecionados (${selectedMovies.length})`;
+}
+
+
+function renderSearchMovies(movies) {
+  searchMoviesResults.innerHTML = "";
+
+  movies.forEach((movie) => {
+    const movieItem = document.createElement("div");
+    movieItem.classList.add("search-movie-item");
+
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    const title = document.createElement("span");
+
+    checkbox.type = "checkbox";
+    checkbox.value = String(movie.id);
+
+    checkbox.checked = selectedMovies.some(
+      (selected) => selected.id === movie.id
+    );
+
+    title.textContent = `${movie.title} (${movie.year})`;
+
+    label.append(checkbox, title);
+    movieItem.appendChild(label);
+    searchMoviesResults.appendChild(movieItem);
+
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        const alreadySelected = selectedMovies.some(
+          (selected) => selected.id === movie.id
+        );
+
+        if (!alreadySelected) {
+          selectedMovies.push(movie);
+        }
+      } else {
+        selectedMovies = selectedMovies.filter(
+          (selected) => selected.id !== movie.id
+        );
+      }
+
+      updateSelectedMoviesButton();
+    });
+  });
+
+}
+
+
+
+
+function searchMovies() {
+  const searchTerm = searchMovieInput.value.trim().toLowerCase();
+
+  const filteredMovies = mockMovies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm)
+  );
+
+  renderSearchMovies(filteredMovies);
+}
+
+
+searchMoviesButton.addEventListener("click", searchMovies);
+
+searchMovieInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    searchMovies();
+  }
+});
+
+
+
+
+
+function loadLists() {
+    const savedLists = localStorage.getItem("movvi-lists");
+
+    if (savedLists) {
+        return JSON.parse(savedLists);
+    }
+
+    return [
+        {
+            id: 1,
+            name: "Lista de Ação",
+            movies: [
+                { id: 1, title: "John Wick" },
+                { id: 2, title: "Matrix" }
+            ]
+        },
+        {
+            id: 2,
+            name: "Lista de Comédia",
+            movies: []
+        }
+    ];
+}
+
+let lists = loadLists();
+
+function saveLists() {
+    localStorage.setItem("movvi-lists", JSON.stringify(lists));
+}
 
 function renderSelectedList(list) {
   selectedListMovies.innerHTML = "";
@@ -88,12 +247,21 @@ function renderLists() {
     const card = document.createElement("div");
     card.classList.add("list-card");
 
+    const listInfo = document.createElement("div");
+listInfo.classList.add("list-card-info");
+
     const icon = document.createElement("i");
     icon.classList.add("fa-solid", "fa-film");
     icon.setAttribute("aria-hidden", "true");
 
-    card.appendChild(icon);
-    card.append(` ${list.name}`);
+   const listName = document.createElement("span");
+listName.classList.add("list-card-name");
+listName.textContent = list.name;
+
+listInfo.append(icon, listName);
+
+const actions = document.createElement("div");
+actions.classList.add("list-card-actions");
 
     const editButton = document.createElement("button");
     editButton.type = "button";
@@ -105,7 +273,7 @@ function renderLists() {
     editIcon.setAttribute("aria-hidden", "true");
 
     editButton.appendChild(editIcon);
-    card.appendChild(editButton);
+   actions.appendChild(editButton);
 
     const deleteListButton = document.createElement("button");
     deleteListButton.type = "button";
@@ -117,12 +285,12 @@ function renderLists() {
     deleteListIcon.setAttribute("aria-hidden", "true");
 
     deleteListButton.appendChild(deleteListIcon);
-    card.appendChild(deleteListButton);
+    actions.appendChild(deleteListButton);
 
     const numberOfMovies = document.createElement("span");
     numberOfMovies.classList.add("list-number-of-movies");
     numberOfMovies.textContent = `${list.movies.length} filmes`;
-    card.appendChild(numberOfMovies);
+    listInfo.appendChild(numberOfMovies);
 
     editButton.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -158,7 +326,7 @@ function renderLists() {
       selectedListTitle.textContent = list.name;
       renderSelectedList(list);
     });
-
+card.append(listInfo, actions);
     listsContainer.appendChild(card);
   });
 }
@@ -225,12 +393,23 @@ function renderEditListMovies() {
 
 renderLists();
 
+const pendingListMovies = localStorage.getItem(
+    "movvi-pending-list-movies"
+);
+
+if (pendingListMovies) {
+    modalCreateList.hidden = false;
+}
+
 cancelListButton.addEventListener("click", () => {
   modalCreateList.hidden = true;
+
+    localStorage.removeItem("movvi-pending-list-movies");
 });
 
 closeModalButton.addEventListener("click", () => {
   modalCreateList.hidden = true;
+   localStorage.removeItem("movvi-pending-list-movies");
 });
 
 cancelEditListButton.addEventListener("click", () => {
@@ -256,13 +435,21 @@ createListForm.addEventListener("submit", (event) => {
     return;
   }
 
-  lists.push({
+  const pendingMovies = JSON.parse(
+    localStorage.getItem("movvi-pending-list-movies") || "[]"
+);
+
+lists.push({
     id: Date.now(),
     name: listName,
-    movies: []
-  });
+    movies: pendingMovies
+});
 
-  renderLists();
+  saveLists();
+  renderLists();  
+
+localStorage.removeItem("movvi-pending-list-movies");
+
   modalCreateList.hidden = true;
   createListForm.reset();
 });
@@ -295,6 +482,8 @@ editListForm.addEventListener("submit", (event) => {
   }
 
   renderLists();
+saveLists();
+
   modalEditList.hidden = true;
   editingList = null;
   movieToDelete = null;
@@ -309,10 +498,21 @@ cancelDeleteListButton.addEventListener("click", () => {
 confirmDeleteListButton.addEventListener("click", () => {
   if (movieToDelete && editingList) {
     editingList.movies = editingList.movies.filter(
-      (movie) => movie.id !== movieToDelete.id
+        (movie) => movie.id !== movieToDelete.id
     );
 
+    const originalList = lists.find(
+        (list) => list.id === editingList.id
+    );
+
+    if (originalList) {
+        originalList.movies = [...editingList.movies];
+        saveLists();
+    }
+
     renderEditListMovies();
+
+
   } else if (listToDelete) {
     const deletedListId = listToDelete.id;
     const index = lists.findIndex(
@@ -335,6 +535,7 @@ confirmDeleteListButton.addEventListener("click", () => {
       }
 
       renderLists();
+      saveLists();
     }
   }
 
@@ -342,3 +543,5 @@ confirmDeleteListButton.addEventListener("click", () => {
   listToDelete = null;
   movieToDelete = null;
 });
+
+

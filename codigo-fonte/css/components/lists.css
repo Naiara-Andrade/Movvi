@@ -107,7 +107,8 @@
 
 .list-card {
   display: flex;
-  flex-direction: column;
+  position:relative;
+   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
   gap: 8px;
@@ -151,22 +152,32 @@
 .list-card .list-edit-button, .list-card .list-delete-button  {
   border: none;
 
-  background-color: var(--dark-primary);
+  background-color: var(--dark-secondary);
 }
 
 .list-card .list-edit-button i {
   color:rgba(2, 146, 55, 0.601);
+  font-size: var(--sml);
  
 }
 
 .list-card .list-delete-button i {
   color:rgba(255, 0, 0, 0.584);
+   font-size: var(--sml);
 }
 
 .list-createList, .list-editList {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.list-card-info{
+  gap:7px;
+}
+
+.list-createList{
+  border: 3px dashed rgba(255, 255, 255, 0.08);
 }
 
 .list-movie {
@@ -261,7 +272,7 @@
 }
 
 #modal-create-list h2,
-#modal-edit-list h2 {
+#modal-edit-list h2, #modal-search-movies h2 {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -371,12 +382,12 @@
 }
 
 #modal-create-list .modal-header h2,
-#modal-edit-list .modal-header h2 {
+#modal-edit-list .modal-header h2, #modal-search-movies h2 {
   margin: 0;
 }
 
 #modal-create-list h2 i,
-#modal-edit-list h2 i {
+#modal-edit-list h2 i, #modal-search-movies h2 i {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -666,16 +677,6 @@
   cursor: pointer;
 }
 
-@media (max-width: 400px) {
-  .edit-list-movie-item {
-    gap: 10px;
-  }
-
-  .edit-list-movie-poster {
-    width: 56px;
-    height: 64px;
-  }
-}
 
 
 #modal-delete-list {
@@ -773,12 +774,182 @@
   background: #b91c1c;
 }
 
-@media (max-width: 360px) {
-  .delete-list-content {
-    padding: 16px;
+.list-card-info{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.list-card-actions{
+  
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
   }
 
-  .delete-list-buttons button {
-    padding: 0 12px;
-  }
+#form-create-list .btn-add-movie-create,
+#form-edit-list .btn-add-movie-edit {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+#form-create-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+#form-create-list .btn-add-movie-create {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  color: var(--secondary);
+ background:transparent;
+
+  border:none;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+}
+
+
+.create-list-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+ 
+}
+
+.create-list-buttons button {
+  flex: 1;
+}
+
+#form-create-list #list-name {
+  height: 46px;
+  min-height: 46px;
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+
+#form-edit-list .btn-add-movie-edit {
+  
+  color: var(--secondary);
+background:transparent;
+  border:none;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+}
+
+
+/* Modal de busca de filmes */
+#modal-search-movies {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  background: rgba(5, 10, 12, 0.82);
+  backdrop-filter: blur(6px);
+}
+
+#modal-search-movies[hidden] {
+  display: none;
+}
+
+#modal-search-movies .search-movies-content {
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 28px;
+
+  background: linear-gradient(
+    160deg,
+    var(--dark-secondary),
+    var(--dark-primary)
+  );
+
+  border: 1px solid rgba(157, 80, 187, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+  animation: modalPop 0.25s ease-out;
+}
+
+
+/* Elementos internos do modal de busca */
+#modal-search-movies label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--sml);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+#modal-search-movies .search-movies-input {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+#modal-search-movies #search-movie-input {
+  flex: 1;
+  min-width: 0;
+  height: 46px;
+  box-sizing: border-box;
+  padding: 0 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--senary);
+  font-family: var(--font-secondary);
+  font-size: var(--md);
+}
+
+#modal-search-movies #search-movie-input::placeholder {
+  color: #7a7f85;
+}
+
+#modal-search-movies #search-movie-input:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(157, 80, 187, 0.2);
+}
+
+#modal-search-movies .btn-search-movies {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 10px;
+  background: var(--secondary);
+  color: var(--senary);
+  font-size: var(--md);
+  cursor: pointer;
+}
+
+#modal-search-movies .search-movies-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#modal-search-movies .search-movies-buttons button {
+  flex: 1;
+  margin-top: 0;
+}
+
+#modal-search-movies .search-movies-buttons button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }

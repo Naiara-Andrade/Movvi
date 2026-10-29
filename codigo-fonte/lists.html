@@ -63,8 +63,18 @@
       />
       <span id="list-name-error"></span>
 
+<button
+  type="button"
+  id="btn-add-movie-create"
+  class="btn-add-movie-create"
+>
+  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+  Adicionar filme
+</button>
+<div class="create-list-buttons">
       <button type="submit" class="btn-modal-primary">Criar</button>
       <button type="button" id="btn-cancel-list" class="btn-cancel-list">Cancelar</button>
+      </div>
     </form>
   </div>
 </div>
@@ -106,7 +116,15 @@
 
       <h3>Filmes da lista (<span id="edit-list-movie-count">0</span>)</h3>
 </div>
-      
+      <button
+  type="button"
+  id="btn-add-movie-edit"
+  class="btn-add-movie-edit"
+>
+  <i class="fa-solid fa-plus" aria-hidden="true"></i>
+  Adicionar filme
+</button>
+
       <div id="edit-list-movies">
         <!-- Os filmes atuais serão inseridos pelo JavaScript -->
       </div>
@@ -154,6 +172,61 @@
 
       <button type="button" id="btn-confirm-delete-list">
         Excluir
+      </button>
+    </div>
+  </div>
+</div>
+ 
+<div id="modal-search-movies" hidden>
+  <div class="search-movies-content">
+    <div class="modal-header">
+      <h2>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        Buscar filmes
+      </h2>
+
+      <button
+        type="button"
+        id="btn-close-search-movies"
+        class="btn-close-modal"
+        aria-label="Fechar busca"
+      >
+        <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <label for="search-movie-input">Nome do filme</label>
+
+    <div class="search-movies-input">
+  <input
+    type="search"
+    id="search-movie-input"
+    class="modal-input"
+    placeholder="Digite o nome de um filme"
+  />
+
+  <button
+    type="button"
+    id="btn-search-movies"
+    class="btn-search-movies"
+    aria-label="Buscar filmes"
+  >
+    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+  </button>
+</div>
+
+    <div
+      id="search-movies-results"
+      class="search-movies-results"
+    ></div>
+
+    <div class="search-movies-buttons">
+      <button  class="btn-cancel-list" type="button" id="btn-cancel-search-movies">
+        Cancelar
+      </button>
+
+      <button class="btn-modal-primary" type="button" id="btn-add-selected-movies" disabled>
+        Adicionar selecionados (0)
       </button>
     </div>
   </div>
