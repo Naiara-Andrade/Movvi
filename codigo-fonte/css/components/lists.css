@@ -113,6 +113,9 @@
   justify-content: flex-end;
   gap: 8px;
 
+  white-space: normal;
+    overflow-wrap: anywhere;
+
   min-height: 150px;
   padding: 18px;
 
@@ -953,3 +956,38 @@ background:transparent;
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+.available-lists .available-list{
+  background-color: var(--dark-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--md);
+  font-weight: 700;
+  text-align: center;
+  min-height: 40px;
+  
+
+  cursor: pointer;
+  transition:
+    transform 0.6s ease,
+    border-color 0.6s ease,
+    background-color 0.6s ease;
+}
+
+
+.available-lists .available-list i {
+  color: var(--secondary);
+  font-size: var(--lg);
+  margin: 8px;
+}
+
+
+.available-lists .available-list:hover {
+  transform: translateY(-3px);
+  border-color: var(--secondary);
+  background-color: var(--dark-primary);
+}
+

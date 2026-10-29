@@ -168,9 +168,17 @@ function openListSelectionModal() {
     savedLists.forEach((list) => {
         const listButton = document.createElement("button");
 
-        listButton.type = "button";
-        listButton.textContent = list.name;
-        listButton.classList.add("available-list");
+listButton.type = "button";
+listButton.classList.add("available-list");
+
+const createIcon = document.createElement("i");
+createIcon.classList.add("fa-solid", "fa-film");
+createIcon.setAttribute("aria-hidden", "true");
+
+const listName = document.createElement("span");
+listName.textContent = list.name;
+
+listButton.append(createIcon, listName);
 
         listButton.addEventListener("click", () => {
             const currentLists = JSON.parse(
@@ -221,7 +229,9 @@ function openListSelectionModal() {
             window.location.href = "lists.html";
         });
 
+        
         availableListsContainer.appendChild(listButton);
+       
     });
 
     listSelectionModal.hidden = false;
