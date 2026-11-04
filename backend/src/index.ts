@@ -1,3 +1,4 @@
+import 'dotenv/config'; //carrega e configura automaticamente o dotenv.
 import express from 'express';
 import routes from './routes/index.routes.js';
 
