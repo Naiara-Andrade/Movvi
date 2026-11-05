@@ -8,4 +8,5 @@ const router = Router(); // Cria um agrupamento de rotas que será conectado à 
 router.get('/', home); //envia a resposta ao cliente
 
 
+
 export default router; //permite utilizar esse agrupamento em outro arquivo.
