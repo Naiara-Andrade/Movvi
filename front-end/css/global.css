@@ -76,3 +76,33 @@ body {
   transition: background-color 0.2s ease;
 }
 
+.btn-secondary:hover {
+  background-color: var(--secondary);
+}
+
+.btn-tertiary {
+   display: inline-flex;
+   align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+   border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--dark-secondary);
+  color: var(--primary);
+  font-family: var(--font-secondary);
+  font-size: var(--sml);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+    outline: none;
+    
+}
+
+.btn-tertiary:hover {
+   border: 1px solid var(--tertiary);
+
+}
+
+
+
+

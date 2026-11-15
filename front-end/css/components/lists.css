@@ -95,10 +95,6 @@
   background: linear-gradient(to right, rgba(255, 174, 0, 0.35), transparent);
 }
 
-.btn-secondary:hover {
-  background-color: var(--secondary);
-}
-
 .lists-container {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -107,14 +103,14 @@
 
 .list-card {
   display: flex;
-  position:relative;
-   flex-direction: column;
+  position: relative;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
   gap: 8px;
 
   white-space: normal;
-    overflow-wrap: anywhere;
+  overflow-wrap: anywhere;
 
   min-height: 150px;
   padding: 18px;
@@ -152,34 +148,35 @@
   background-color: var(--dark-primary);
 }
 
-.list-card .list-edit-button, .list-card .list-delete-button  {
+.list-card .list-edit-button,
+.list-card .list-delete-button {
   border: none;
 
   background-color: var(--dark-secondary);
 }
 
 .list-card .list-edit-button i {
-  color:rgba(2, 146, 55, 0.601);
+  color: rgba(2, 146, 55, 0.601);
   font-size: var(--sml);
- 
 }
 
 .list-card .list-delete-button i {
-  color:rgba(255, 0, 0, 0.584);
-   font-size: var(--sml);
+  color: rgba(255, 0, 0, 0.584);
+  font-size: var(--sml);
 }
 
-.list-createList, .list-editList {
+.list-createList,
+.list-editList {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.list-card-info{
-  gap:7px;
+.list-card-info {
+  gap: 7px;
 }
 
-.list-createList{
+.list-createList {
   border: 3px dashed rgba(255, 255, 255, 0.08);
 }
 
@@ -239,7 +236,9 @@
   grid-column: 1 / -1;
 }
 
-#modal-create-list {
+#modal-create-list,
+#modal-register
+ {
   position: fixed;
   inset: 0;
 
@@ -275,7 +274,9 @@
 }
 
 #modal-create-list h2,
-#modal-edit-list h2, #modal-search-movies h2 {
+#modal-edit-list h2,
+#modal-search-movies h2,
+#modal-register h2 {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -294,7 +295,9 @@
   gap: 10px;
 }
 
-#form-create-list label, #form-edit-list label, #form-edit-list h3 {
+#form-create-list label,
+#form-edit-list label,
+#form-edit-list h3 {
   flex: 0 0 100%;
   margin-bottom: -2px;
   color: var(--primary);
@@ -306,7 +309,8 @@
 
 #list-name,
 #edit-list-name,
-#search-edit-movies {
+#search-edit-movies,
+.register-info {
   box-sizing: border-box;
   flex: 0 0 100%;
   min-width: 0;
@@ -385,12 +389,15 @@
 }
 
 #modal-create-list .modal-header h2,
-#modal-edit-list .modal-header h2, #modal-search-movies h2 {
+#modal-edit-list .modal-header h2,
+#modal-search-movies h2 {
   margin: 0;
 }
 
 #modal-create-list h2 i,
-#modal-edit-list h2 i, #modal-search-movies h2 i {
+#modal-edit-list h2 i,
+#modal-search-movies h2 i,
+.modal-register .register-info i {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -447,7 +454,7 @@
 }
 
 #modal-edit-list[hidden] {
-   display: none;
+  display: none;
 }
 
 #modal-edit-list > div {
@@ -559,14 +566,10 @@
   box-shadow: 0 6px 18px rgba(157, 80, 187, 0.5);
 }
 
-
 .edit-list-input {
   display: flex;
   flex-direction: column;
-  gap:10px;
-
-  
-  
+  gap: 10px;
 }
 #modal-edit-list #edit-list-name {
   flex: 0 1 auto;
@@ -578,17 +581,11 @@
 .edit-list-buttons {
   display: flex;
   gap: 10px;
-  
 }
 
 .edit-list-buttons button {
   flex: 1;
 }
-
-
-
-
-
 
 #edit-list-movies {
   display: flex;
@@ -623,7 +620,6 @@
   font-size: 16px;
   cursor: pointer;
 }
-
 
 #edit-list-movies {
   display: flex;
@@ -680,8 +676,6 @@
   cursor: pointer;
 }
 
-
-
 #modal-delete-list {
   position: fixed;
   inset: 0;
@@ -705,7 +699,11 @@
   padding: 22px;
   border: 1px solid #a52a2a;
   border-radius: 16px;
-  background: linear-gradient(160deg, var(--dark-secondary), var(--dark-primary));
+  background: linear-gradient(
+    160deg,
+    var(--dark-secondary),
+    var(--dark-primary)
+  );
   color: var(--senary);
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.45);
 }
@@ -777,20 +775,18 @@
   background: #b91c1c;
 }
 
-.list-card-info{
+.list-card-info {
   display: flex;
   flex-direction: column;
-
 }
 
-.list-card-actions{
-  
+.list-card-actions {
   position: absolute;
   top: 10px;
   right: 10px;
   display: flex;
   align-items: center;
-  }
+}
 
 #form-create-list .btn-add-movie-create,
 #form-edit-list .btn-add-movie-edit {
@@ -799,7 +795,8 @@
   margin-left: auto;
 }
 
-#form-create-list {
+#form-create-list,
+#form-register {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -810,19 +807,17 @@
   width: fit-content;
   margin-left: auto;
   color: var(--secondary);
- background:transparent;
+  background: transparent;
 
-  border:none;
+  border: none;
   font-family: var(--font-secondary);
   font-weight: 600;
 }
-
 
 .create-list-buttons {
   display: flex;
   flex-direction: row;
   gap: 10px;
- 
 }
 
 .create-list-buttons button {
@@ -837,14 +832,12 @@
 }
 
 #form-edit-list .btn-add-movie-edit {
-  
   color: var(--secondary);
-background:transparent;
-  border:none;
+  background: transparent;
+  border: none;
   font-family: var(--font-secondary);
   font-weight: 600;
 }
-
 
 /* Modal de busca de filmes */
 #modal-search-movies {
@@ -885,7 +878,6 @@ background:transparent;
 
   animation: modalPop 0.25s ease-out;
 }
-
 
 /* Elementos internos do modal de busca */
 #modal-search-movies label {
@@ -957,7 +949,7 @@ background:transparent;
   cursor: not-allowed;
 }
 
-.available-lists .available-list{
+.available-lists .available-list {
   background-color: var(--dark-secondary);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
@@ -968,7 +960,6 @@ background:transparent;
   font-weight: 700;
   text-align: center;
   min-height: 40px;
-  
 
   cursor: pointer;
   transition:
@@ -977,17 +968,106 @@ background:transparent;
     background-color 0.6s ease;
 }
 
-
 .available-lists .available-list i {
   color: var(--secondary);
   font-size: var(--lg);
   margin: 8px;
 }
 
-
 .available-lists .available-list:hover {
   transform: translateY(-3px);
   border-color: var(--secondary);
   background-color: var(--dark-primary);
+}
+
+#modal-register {
+  flex-direction: column;
+  justify-content:space-around;
+  
+  background: none;
+  z-index: 60;
+  width: 100%;
+  max-width: 300px;
+ 
+  max-height:450px;
+  background: linear-gradient(
+    160deg,
+    var(--dark-secondary),
+    var(--dark-primary)
+  );
+  border: 1px solid var(--tertiary);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    
+
+}
+
+.modal-register .register-info i {
+  background: none;
+  color: var(--tertiary);
+    
+
+}
+
+#form-register p {
+  text-align: center;
+  color: var(--senary);
+  font-family: var(--font-secondary);
+  font-size: var(--sml);
+    
+
+}
+
+#form-register p a {
+  color: var(--tertiary);
+  margin: 5px;
+}
+
+#form-register {
+  display: flex;
+  gap: 8px;
+    
+
+}
+
+.register-info {
+  display: flex;
+  flex: none;
+  padding: 0;
+    
+
+}
+
+.register-input {
+  color: var(--senary);
+  font-family: var(--font-secondary);
+  font-size: var(--md);
+
+  background: none;
+  border: none;
+  padding: 0 14px;
+    
+
+}
+
+.register-input:focus {
+  outline: none;
+}
+
+.register-button {
+  margin:10px;
+    
+
+}
+
+.btn-tertiary:hover {
+  border: 1px solid var(--tertiary);
+}
+
+#modal-register h2 {
+  margin: 10px 0;
+  font-size: var(--md);
+  
+  
 }
 
