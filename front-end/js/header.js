@@ -21,7 +21,7 @@ const currentPage =
         if (
             link &&
             link !== "#" &&
-            currentPage.includes(link)
+             currentPage === link
         ) {
 
             item.classList.add(
