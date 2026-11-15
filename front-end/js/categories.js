@@ -2,8 +2,6 @@ let movies = [];
 
 let movieGenres = [];
 
-let selectedMoviesForList = [];
-
 let currentPage = 1;
 
 let totalPages = 1;
@@ -11,10 +9,6 @@ let totalPages = 1;
 let currentFilters = {};
 
 let allMovies = [];
-
-const pendingListName = localStorage.getItem("movvi-pending-list-name");
-const pendingListId = localStorage.getItem("movvi-pending-list-id");
-
 
 const GENRES_URL = `https://api.themoviedb.org/3/genre/movie/list?language=pt-BR&api_key=${API_KEY}`;
 
@@ -25,18 +19,6 @@ const categoriesChip = document.querySelectorAll(".category-chip");
 const pagination = document.getElementById("pagination");
 
 const discoverButtons = document.querySelectorAll(".discover-button");
-
-const selectedMoviesBar = document.getElementById("selected-movies-bar");
-const selectedMoviesCount = document.getElementById("selected-movies-count");
-const addSelectedToListButton = document.getElementById("btn-add-selected-to-list");
-
-
-const listSelectionModal = document.getElementById("list-selection-modal");
-const closeListModalButton = document.getElementById("close-list-modal");
-const createNewListButton = document.getElementById("create-new-list");
-const availableListsContainer = document.getElementById("available-lists");
-
-
 
 async function loadMovieGenres() {
   const response = await fetch(GENRES_URL);
@@ -102,218 +84,6 @@ function createCategories(movies, genreId = null) {
   });
 }
 
-
-function handleMovieSelection(event) {
-    const movie = event.detail.movie;
-
-    const alreadySelected = selectedMoviesForList.some(
-        (selectedMovie) => selectedMovie.id === movie.id
-    );
-
-    if (alreadySelected) {
-        selectedMoviesForList = selectedMoviesForList.filter(
-            (selectedMovie) => selectedMovie.id !== movie.id
-        );
-
-        document.querySelectorAll(".card-add-button").forEach((button) => {
-            if (button.dataset.movieId === String(movie.id)) {
-                button.classList.remove("card-add-button--selected");
-            }
-        });
-
-        updateSelectedMoviesBar();
-        console.log("Filme removido da seleção:", movie.title);
-        return;
-    }
-
-    if (selectedMoviesForList.length >= 3) {
-        alert("Você pode selecionar no máximo 3 filmes.");
-        return;
-    }
-
-    selectedMoviesForList.push(movie);
-
-    document.querySelectorAll(".card-add-button").forEach((button) => {
-        if (button.dataset.movieId === String(movie.id)) {
-            button.classList.add("card-add-button--selected");
-        }
-    });
-
-    updateSelectedMoviesBar();
-    console.log("Filmes selecionados:", selectedMoviesForList);
-}
-
-function updateSelectedMoviesBar() {
-    const totalSelected = selectedMoviesForList.length;
-
-    selectedMoviesBar.hidden = totalSelected === 0;
-
-    selectedMoviesCount.textContent =
-        totalSelected === 1
-            ? "1 filme selecionado"
-            : `${totalSelected} filmes selecionados`;
-
-    addSelectedToListButton.textContent =
-        `Adicionar à lista (${totalSelected})`;
-}
-
-
-function openListSelectionModal() {
-    const savedLists = JSON.parse(
-        localStorage.getItem("movvi-lists") || "[]"
-    );
-
-    availableListsContainer.innerHTML = "";
-
-    savedLists.forEach((list) => {
-        const listButton = document.createElement("button");
-
-listButton.type = "button";
-listButton.classList.add("available-list");
-
-const createIcon = document.createElement("i");
-createIcon.classList.add("fa-solid", "fa-film");
-createIcon.setAttribute("aria-hidden", "true");
-
-const listName = document.createElement("span");
-listName.textContent = list.name;
-
-listButton.append(createIcon, listName);
-
-        listButton.addEventListener("click", () => {
-            const currentLists = JSON.parse(
-                localStorage.getItem("movvi-lists") || "[]"
-            );
-
-            const targetList = currentLists.find(
-                (savedList) =>
-                    String(savedList.id) === String(list.id)
-            );
-
-            if (!targetList) {
-                alert("Não foi possível encontrar a lista selecionada.");
-                return;
-            }
-
-            const duplicateMovies = selectedMoviesForList.filter(
-                (movie) =>
-                    targetList.movies.some(
-                        (savedMovie) => savedMovie.id === movie.id
-                    )
-            );
-
-            const newMovies = selectedMoviesForList.filter(
-                (movie) =>
-                    !targetList.movies.some(
-                        (savedMovie) => savedMovie.id === movie.id
-                    )
-            );
-
-            targetList.movies.push(...newMovies);
-
-            localStorage.setItem(
-                "movvi-lists",
-                JSON.stringify(currentLists)
-            );
-
-            if (duplicateMovies.length > 0) {
-                const duplicateTitles = duplicateMovies
-                    .map((movie) => movie.title)
-                    .join(", ");
-
-                alert(
-                    `Estes filmes já estavam na lista e não foram adicionados: ${duplicateTitles}`
-                );
-            }
-
-            window.location.href = "lists.html";
-        });
-
-        
-        availableListsContainer.appendChild(listButton);
-       
-    });
-
-    listSelectionModal.hidden = false;
-}
-
-
-function closeListSelectionModal() {
-    listSelectionModal.hidden = true;
-}
-
-function saveMoviesToPendingList() {
-    const savedLists = JSON.parse(
-        localStorage.getItem("movvi-lists") || "[]"
-    );
-
-    let targetList;
-
-    if (pendingListName) {
-        targetList = {
-            id: Date.now(),
-            name: pendingListName,
-            movies: []
-        };
-
-        savedLists.push(targetList);
-    } else if (pendingListId) {
-        targetList = savedLists.find(
-            (list) => String(list.id) === pendingListId
-        );
-
-        if (!targetList) {
-            alert("Não foi possível encontrar a lista selecionada.");
-            return;
-        }
-    }
-
-    const duplicateMovies = selectedMoviesForList.filter(
-        (movie) => targetList.movies.some(
-            (savedMovie) => savedMovie.id === movie.id
-        )
-    );
-
-    const newMovies = selectedMoviesForList.filter(
-        (movie) => !targetList.movies.some(
-            (savedMovie) => savedMovie.id === movie.id
-        )
-    );
-
-    targetList.movies.push(...newMovies);
-
-    localStorage.setItem("movvi-lists", JSON.stringify(savedLists));
-
-    if (duplicateMovies.length > 0) {
-        const duplicateTitles = duplicateMovies
-            .map((movie) => movie.title)
-            .join(", ");
-
-        alert(`Estes filmes já estavam na lista e não foram adicionados: ${duplicateTitles}`);
-    }
-
-    localStorage.removeItem("movvi-pending-list-name");
-    localStorage.removeItem("movvi-pending-list-id");
-
-    window.location.href = "lists.html";
-}
-
-
-function updateSelectedMoviesBar() {
-    const totalSelected = selectedMoviesForList.length;
-
-    selectedMoviesBar.hidden = totalSelected === 0;
-
-    selectedMoviesCount.textContent =
-        totalSelected === 1
-            ? "1 filme selecionado"
-            : `${totalSelected} filmes selecionados`;
-
-    addSelectedToListButton.textContent =
-        `Adicionar à lista (${totalSelected})`;
-}
-
-
 function getGenreIdByName(genreName) {
   const selectedGenre = movieGenres.find((genre) => genre.name === genreName);
 
@@ -358,8 +128,11 @@ async function loadHiddenGemsMovies(genreId = null) {
   }
 
   url += `&vote_average.gte=7.0`;
+
   url += `&vote_count.gte=600`;
+
   url += `&vote_count.lte=899`;
+
   url += `&sort_by=vote_average.desc`;
 
   const response = await fetch(url);
@@ -427,6 +200,7 @@ function createPagination() {
   pagination.innerHTML = "";
 
   const maxVisiblePages = 5;
+
   const maxPages = Math.min(totalPages, 10);
 
   let startPage = Math.max(1, currentPage - 2);
@@ -530,9 +304,11 @@ function getMoviesPerPage() {
   if (window.innerWidth > 1200) {
     return 24;
   }
+
   if (window.innerWidth <= 768) {
     return 18;
   }
+
   return 20;
 }
 
@@ -542,46 +318,7 @@ async function initCategories() {
   await loadMovies();
 }
 
-
 async function init() {
-  document.addEventListener(
-    "movvi:add-movie-to-selection",
-    handleMovieSelection,
-
-    
-  );
-
-  addSelectedToListButton.addEventListener("click", () => {
-    if (pendingListName || pendingListId) {
-        saveMoviesToPendingList();
-        return;
-    }
-
-    openListSelectionModal();
-});
-
-closeListModalButton.addEventListener("click", closeListSelectionModal);
-
-listSelectionModal.addEventListener("click", (event) => {
-    if (event.target === listSelectionModal) {
-        closeListSelectionModal();
-    }
-});
-
-
-createNewListButton.addEventListener("click", () => {
-    localStorage.setItem(
-        "movvi-pending-list-movies",
-        JSON.stringify(selectedMoviesForList)
-    );
-
-    localStorage.removeItem("movvi-pending-list-name");
-    localStorage.removeItem("movvi-pending-list-id");
-
-    window.location.href = "lists.html";
-});
-
-
   initCategoryFilters();
 
   initDiscover();
