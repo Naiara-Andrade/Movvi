@@ -13,11 +13,14 @@ function initHeader() {
 
     // Identifica a página pelo arquivo, sem depender da raiz/domínio
     // (o site também pode estar publicado dentro de uma subpasta).
-    const currentFile = window.location.pathname
+    const pathFile = window.location.pathname
         .split("/")
         .filter(Boolean)
         .pop()
-        ?.toLowerCase() || "index.html";
+        ?.toLowerCase();
+    const currentFile = pathFile === "categories.html" || pathFile === "categories"
+        ? "categories.html"
+        : "index.html";
 
     menuItems.forEach((item) => {
         const link = item.getAttribute("href");
