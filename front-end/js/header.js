@@ -11,30 +11,25 @@ function initHeader() {
         });
     }
 
-    // Normaliza os caminhos
-    const normalizePath = (path) => {
-        return path
-            .replace(/\/index\.html$/i, "")
-            .replace(/\.html$/i, "")
-            .replace(/\/+$/, "")
-            .toLowerCase() || "/";
-    };
-
-    const currentPath = normalizePath(window.location.pathname);
+    // Identifica a página pelo arquivo, sem depender da raiz/domínio
+    // (o site também pode estar publicado dentro de uma subpasta).
+    const currentFile = window.location.pathname
+        .split("/")
+        .filter(Boolean)
+        .pop()
+        ?.toLowerCase() || "index.html";
 
     menuItems.forEach((item) => {
         const link = item.getAttribute("href");
+        const linkFile = link?.split("/").filter(Boolean).pop()?.toLowerCase();
+        const isCurrentPage = linkFile === currentFile;
 
-        if (!link || link === "#") return;
-
-        const linkPath = normalizePath(
-            new URL(link, window.location.href).pathname
-        );
-
-        if (linkPath === currentPath) {
+        if (isCurrentPage) {
             item.classList.add("menu-item--active");
+            item.setAttribute("aria-current", "page");
         } else {
             item.classList.remove("menu-item--active");
+            item.removeAttribute("aria-current");
         }
     });
 }
