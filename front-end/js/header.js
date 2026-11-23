@@ -11,8 +11,7 @@ function initHeader() {
         });
     }
 
-    // Identifica a página pelo arquivo, sem depender da raiz/domínio
-    // (o site também pode estar publicado dentro de uma subpasta).
+    
     const pathFile = window.location.pathname
         .split("/")
         .filter(Boolean)
